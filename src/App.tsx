@@ -172,12 +172,12 @@ export default function App() {
           >
             {/* Left Content */}
             <div className="max-w-3xl flex-grow">
-              <h1 className="text-4xl md:text-6xl lg:text-[5.5rem] font-sans text-white font-medium leading-[1.05] tracking-tight mb-6 uppercase">
-                CRACK THE <br />
-                NLUs & IIMs
+              <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-sans text-white font-medium leading-[1.05] tracking-tight mb-6 uppercase">
+                Your Child's Journey to <br />
+                NLUs & IIMs Starts Here
               </h1>
-              <p className="text-base md:text-lg text-white/90 max-w-xl font-light leading-relaxed mb-10">
-                Crafting success stories with passion and competitive excellence for over a decade with our experienced faculty teams.
+              <p className="text-base md:text-lg text-white/90 max-w-2xl font-light leading-relaxed mb-10">
+                A future-ready integrated learning model where Intermediate academics and CLAT/IPMAT entrance preparation work together through expert faculty, structured schedules, mock tests, and personalized mentoring.
               </p>
 
               <div className="flex flex-wrap items-center gap-8 mb-16">
@@ -256,6 +256,7 @@ export default function App() {
                     "Complete Board Exam + CLAT coaching in a single structured program",
                     "Daily Legal Reasoning, GK, English & Logical Reasoning practice",
                     "Regular CLAT mock tests with detailed performance analytics",
+                    "AI based performance metrics and improvement tools",
                     "Personalized mentorship with CLAT-qualified faculty"
                   ].map((item, i) => (
                     <li key={i} className="flex gap-4 items-start">
@@ -290,6 +291,7 @@ export default function App() {
                     "Integrated Board + IPMAT coaching in a single focused environment",
                     "Advanced Quantitative Aptitude, Logical Reasoning & VARC training",
                     "IIM-pattern mock tests, sectional tests & time management drills",
+                    "AI based performance metrics and improvement tools",
                     "Expert faculty with IIM alumni & top aptitude trainers"
                   ].map((item, i) => (
                     <li key={i} className="flex gap-4 items-start">
@@ -350,11 +352,11 @@ export default function App() {
                     <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="+91 XXXXX XXXXX" />
                   </div>
                 </div>
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
-                  <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="your@email.com" />
-                </div>
                 <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
+                    <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="your@email.com" />
+                  </div>
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-2">Current Class</label>
                     <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
@@ -363,12 +365,22 @@ export default function App() {
                       <option value="11">Class 11th</option>
                     </select>
                   </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-2">Program of Interest</label>
                     <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
                       <option value="">Select Program</option>
                       <option value="clat">INTER + CLAT</option>
                       <option value="ipmat">INTER + IPMAT</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Campus</label>
+                    <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
+                      <option value="">Select Campus</option>
+                      <option value="kompally">Kompally (Residential)</option>
+                      <option value="himayatnagar">Himayat Nagar (Day Scholar)</option>
                     </select>
                   </div>
                 </div>
@@ -633,25 +645,60 @@ export default function App() {
               <p className="text-lg text-slate-600">The visionaries behind La Excellence, shaping the future of education in India.</p>
             </div>
           </FadeIn>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { name: "Dr. Rambabu Paladugu", role: "Managing Director", desc: "A visionary leader with over a decade of experience in mentoring civil servants and guiding the institute's strategic direction.", img: "/founders/image.png" },
-              { name: "Mr. Narendranath", role: "Director", desc: "Spearheading academic innovations and bringing world-class educational practices to the Indian competitive exam landscape.", img: "/founders/image2.jpeg" },
-              { name: "Mr. Seenaiah", role: "Academic Director", desc: "An esteemed academician ensuring the highest quality of pedagogy and material structure across all programs.", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600" }
-            ].map((founder, i) => (
-              <FadeIn delay={i * 0.1} key={founder.name}>
-                <div className="group rounded-3xl overflow-hidden bg-white shadow-sm border border-slate-200">
-                  <div className="aspect-[4/5] overflow-hidden bg-slate-100">
-                    <img src={founder.img} alt={founder.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-                  </div>
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold text-laex-blue mb-1">{founder.name}</h3>
-                    <p className="text-laex-orange font-medium mb-4">{founder.role}</p>
-                    <p className="text-slate-600 text-sm leading-relaxed">{founder.desc}</p>
+          <div className="space-y-12">
+            {/* Chairman Card - Featured */}
+            <FadeIn>
+              <div className="group rounded-[3rem] overflow-hidden bg-white shadow-xl border border-slate-100 flex flex-col lg:flex-row min-h-[500px]">
+                <div className="lg:w-1/3 aspect-square lg:aspect-auto overflow-hidden bg-slate-100">
+                  <img src="/founders/image.png" alt="Dr. Ram Babu P" className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+                </div>
+                <div className="lg:w-2/3 p-10 lg:p-16 flex flex-col justify-center relative">
+                  <Quote className="absolute top-12 right-12 w-24 h-24 text-slate-50 -z-0 opacity-50" />
+                  <div className="relative z-10">
+                    <div className="inline-flex px-3 py-1 bg-laex-orange/10 text-laex-orange rounded-full text-xs font-bold tracking-widest uppercase mb-6 w-max">Chairman's Message</div>
+                    <h3 className="text-3xl md:text-4xl font-bold text-laex-blue mb-2">Dr. Ram Babu P</h3>
+                    <p className="text-laex-orange font-bold mb-8 text-lg uppercase tracking-wider">Chairman, La Excellence IAS Academy</p>
+                    
+                    <div className="space-y-6 text-slate-600 leading-relaxed italic text-lg">
+                      <p>"Dear Students, I consider myself the First Employee of La Excellence, marking the beginning of a journey that has been both meaningful and transformative. From the very start, this institution has stood for more than just coaching—it reflects a shared mission to nurture aspirants into confident, capable, and compassionate civil servants."</p>
+                      <p>"Over the years, I’ve had the privilege of witnessing countless aspirants secure ranks in the Civil Services Examination, turning their dedication and discipline into success stories that continue to inspire many."</p>
+                      <p>"At the La Excellence IAS Academy, I will work closely with young minds—helping them discover their strengths, think with clarity, and pursue their goals with purpose and conviction. Watching students evolve into determined individuals ready to serve the nation fills me with immense pride."</p>
+                    </div>
                   </div>
                 </div>
-              </FadeIn>
-            ))}
+              </div>
+            </FadeIn>
+
+            {/* Other Directors */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                { 
+                  name: "Anush Reddy", 
+                  role: "Dean, IAS Integrated Programme", 
+                  desc: "As the Dean, I have spent the past ten years mentoring aspirants through a comprehensive approach that blends academic excellence with discipline, consistency, and personal growth. I believe that success in the Civil Services is shaped by perseverance, focus, and a deep sense of purpose. My constant endeavour is to help students grow into well-rounded individuals who balance learning with reflection, ambition with humility, and preparation with perseverance.", 
+                  img: "/founders/image2.jpeg" 
+                },
+                { 
+                  name: "Ch Srinivasa Reddy", 
+                  role: "Director", 
+                  desc: "With nearly three decades in education, including over eight years in Integrated IAS training, I have dedicated my life to nurturing young minds and building institutions grounded in excellence and integrity. My vision has always been to create learning spaces that inspire curiosity, discipline, and purpose. I have a deep desire to empower students—to help them believe in themselves, think boldly, and grow with confidence and compassion.", 
+                  img: "/founders/image3.png" 
+                }
+              ].map((founder, i) => (
+                <FadeIn delay={i * 0.1} key={founder.name}>
+                  <div className="group rounded-[2.5rem] overflow-hidden bg-white shadow-sm border border-slate-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+                    <div className="aspect-[16/10] overflow-hidden bg-slate-100">
+                      <img src={founder.img} alt={founder.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+                    </div>
+                    <div className="p-8 lg:p-10 flex flex-col flex-grow">
+                      <h3 className="text-2xl font-bold text-laex-blue mb-1">{founder.name}</h3>
+                      <p className="text-laex-orange font-bold mb-6 text-xs uppercase tracking-widest">{founder.role}</p>
+                      <p className="text-slate-600 text-sm leading-relaxed font-medium italic">"{founder.desc}"</p>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
           </div>
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-laex-light to-transparent pointer-events-none z-10"></div>
         </div>
@@ -876,8 +923,90 @@ export default function App() {
           </div>
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-laex-light to-transparent pointer-events-none z-10"></div>
         </div>
-        <SectionDivider fromColor="from-laex-light" toColor="to-laex-dark" height="h-32" />
+        <SectionDivider fromColor="from-laex-light" toColor="to-laex-light" height="h-32" />
       </section>
+
+      {/* Location Section */}
+      <section id="location" className="bg-laex-light relative py-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-slate-200 flex flex-col lg:flex-row min-h-[600px]">
+            {/* Map Area */}
+            <div className="lg:w-7/12 h-[400px] lg:h-auto relative bg-slate-100">
+               <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.111874984534!2d78.4839!3d17.5255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb910000000001%3A0x0!2sKompally%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                className="absolute inset-0 w-full h-full grayscale opacity-80 contrast-125 brightness-100 hover:grayscale-0 transition-all duration-700"
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy"
+                title="Google Maps Location"
+              ></iframe>
+            </div>
+            
+            {/* Info Area */}
+            <div className="lg:w-5/12 p-12 lg:p-16 flex flex-col justify-center bg-laex-blue text-white relative">
+              <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-current text-white"><polygon points="100,100 0,100 100,0" /></svg>
+              </div>
+              <FadeIn>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-bold text-sm tracking-wide mb-8 border border-white/20">
+                  <MapPin className="w-4 h-4 text-laex-orange" /> VISIT OUR CAMPUS
+                </div>
+                <h2 className="text-4xl font-serif font-bold mb-6">Come Say <span className="text-laex-orange">Hello.</span></h2>
+                <p className="text-white/80 mb-10 leading-relaxed">
+                  Located in the serene and academic-friendly environment of Kompally, our residential campus provides the perfect atmosphere for deep focus and competitive preparation.
+                </p>
+                
+                <div className="space-y-8">
+                  <div className="flex gap-4 items-start">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                       <MapPin className="w-6 h-6 text-laex-orange" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-xl mb-1">Main Residential Campus</h4>
+                      <p className="text-white/60 text-sm">Jayabheri Park Rd, Kompally, Hyderabad, Telangana 500100</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-4 items-start">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                       <Clock className="w-6 h-6 text-laex-orange" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-xl mb-1">Visiting Hours</h4>
+                      <p className="text-white/60 text-sm">Mon - Sat: 9:00 AM - 7:00 PM<br/>Sun: 10:00 AM - 2:00 PM</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 items-start">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                       <Phone className="w-6 h-6 text-laex-orange" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-xl mb-1">Call for Admissions</h4>
+                      <div className="flex flex-col gap-1 mt-1">
+                        <a href="tel:+919000296424" className="text-white hover:text-laex-orange transition-colors font-medium">+91 90002 96424</a>
+                        <a href="tel:+919247903001" className="text-white hover:text-laex-orange transition-colors font-medium">+91 92479 03001</a>
+                        <a href="tel:+919247903002" className="text-white hover:text-laex-orange transition-colors font-medium">+91 92479 03002</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <a 
+                  href="https://www.google.com/maps/search/La+Excellence+IAS+Academy+Kompally+Hyderabad" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-12 inline-flex items-center gap-3 bg-laex-orange hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-xl shadow-laex-orange/20 group w-max"
+                >
+                  Get Directions <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider fromColor="from-laex-light" toColor="to-laex-dark" height="h-32" />
 
       {/* Footer */}
       <footer className="bg-laex-dark text-white pt-20 pb-8 border-t-[8px] border-laex-orange relative overflow-hidden">
@@ -931,9 +1060,25 @@ export default function App() {
                   <MapPin className="w-5 h-5 text-laex-orange shrink-0 mt-0.5" />
                   <span>Kompally, Hyderabad — Telangana 500100 (Main Campus)</span>
                 </li>
-                <li className="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10 hover:border-laex-orange transition-colors cursor-pointer group">
-                  <Phone className="w-5 h-5 text-laex-orange shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="text-lg font-bold text-white tracking-wide">+91 9052 40 2929</span>
+                <li className="flex flex-col gap-4 bg-white/5 p-5 rounded-2xl border border-white/10 hover:border-laex-orange/50 transition-all group">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-laex-orange shrink-0 group-hover:scale-110 transition-transform" />
+                    <span className="text-xs uppercase tracking-widest font-bold text-white/40">Contact Numbers</span>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <a href="tel:+919000296424" className="text-lg font-bold text-white tracking-wide hover:text-laex-orange transition-colors flex items-center justify-between group/num">
+                      +91 90002 96424
+                      <ArrowRight className="w-4 h-4 opacity-0 group-hover/num:opacity-100 -translate-x-2 group-hover/num:translate-x-0 transition-all" />
+                    </a>
+                    <a href="tel:+919247903001" className="text-lg font-bold text-white tracking-wide hover:text-laex-orange transition-colors flex items-center justify-between group/num">
+                      +91 92479 03001
+                      <ArrowRight className="w-4 h-4 opacity-0 group-hover/num:opacity-100 -translate-x-2 group-hover/num:translate-x-0 transition-all" />
+                    </a>
+                    <a href="tel:+919247903002" className="text-lg font-bold text-white tracking-wide hover:text-laex-orange transition-colors flex items-center justify-between group/num">
+                      +91 92479 03002
+                      <ArrowRight className="w-4 h-4 opacity-0 group-hover/num:opacity-100 -translate-x-2 group-hover/num:translate-x-0 transition-all" />
+                    </a>
+                  </div>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-laex-orange shrink-0" />
