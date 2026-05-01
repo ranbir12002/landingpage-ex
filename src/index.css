@@ -28,3 +28,53 @@ html {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Floating animation with shadow depth */
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translateY(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-float-delay-1 {
+  animation: float 5s ease-in-out 1s infinite;
+}
+.animate-float-delay-2 {
+  animation: float 4.5s ease-in-out 0.5s infinite;
+}
+.animate-float-delay-3 {
+  animation: float 5.5s ease-in-out 1.5s infinite;
+}
+.animate-float-delay-4 {
+  animation: float 4s ease-in-out 2s infinite;
+}
+.animate-float-delay-5 {
+  animation: float 5s ease-in-out 0.8s infinite;
+}
+.animate-float-delay-6 {
+  animation: float 4.5s ease-in-out 1.2s infinite;
+}
+
+/* Course card hover lift effect */
+.course-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.course-card:hover {
+  transform: scale(1.03) translateY(-8px);
+  box-shadow: 0 8px 30px rgba(8, 86, 152, 0.25);
+}

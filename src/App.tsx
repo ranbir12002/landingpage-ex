@@ -130,6 +130,10 @@ export default function App() {
   });
   const xTransform = useTransform(galleryProgress, [0, 1], ["0%", "-66.6666%"]);
 
+  // Gallery slide text animations — each slide is 0-0.33, 0.33-0.66, 0.66-1.0
+  const slide2TextOpacity = useTransform(galleryProgress, [0.33, 0.36, 0.61, 0.66], [0, 1, 1, 0]);
+  const slide2TextY = useTransform(galleryProgress, [0.33, 0.36, 0.61, 0.66], [40, 0, 0, -30]);
+
   return (
     <div className="min-h-screen bg-laex-light selection:bg-laex-orange selection:text-white font-sans text-slate-800">
 
@@ -222,8 +226,8 @@ export default function App() {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className="bg-laex-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <section id="programs" className="bg-laex-light relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
           <FadeIn>
             <div className="text-center max-w-3xl mx-auto mb-20">
               <div className="text-laex-orange font-bold tracking-widest uppercase text-sm mb-4">Our Integrated Programs</div>
@@ -239,7 +243,7 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* CLAT Card */}
             <FadeIn delay={0.1}>
-              <div className="bg-white rounded-[2rem] border border-slate-200 p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl transition-shadow h-full flex flex-col group">
+              <div className="course-card bg-white rounded-[2rem] border-2 border-slate-200 p-8 md:p-12 h-full flex flex-col group cursor-pointer">
                 <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 border border-blue-100 group-hover:bg-laex-blue group-hover:text-white transition-colors duration-300">
                   <Scale className="w-8 h-8 text-laex-blue group-hover:text-white transition-colors" />
                 </div>
@@ -273,7 +277,7 @@ export default function App() {
 
             {/* IPMAT Card */}
             <FadeIn delay={0.2}>
-              <div className="bg-white rounded-[2rem] border border-slate-200 p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl transition-shadow h-full flex flex-col group">
+              <div className="course-card bg-white rounded-[2rem] border-2 border-slate-200 p-8 md:p-12 h-full flex flex-col group cursor-pointer">
                 <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-8 border border-orange-100 group-hover:bg-laex-orange group-hover:text-white transition-colors duration-300">
                   <TrendingUp className="w-8 h-8 text-laex-orange group-hover:text-white transition-colors" />
                 </div>
@@ -423,12 +427,12 @@ export default function App() {
             <FadeIn delay={0.2}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 pt-12">
-                  <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/10 transition-colors">
+                  <div className="animate-float bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/10 transition-colors">
                     <div className="text-4xl font-serif text-white opacity-20 mb-2 absolute right-4 top-4 font-bold">01</div>
                     <h4 className="text-xl font-bold mb-2">NLSIU Bangalore</h4>
                     <p className="text-white/60 text-sm">India's #1 Law School for visionary minds.</p>
                   </div>
-                  <div className="bg-laex-orange p-6 rounded-2xl relative overflow-hidden text-white shadow-2xl">
+                  <div className="animate-float-delay-1 bg-laex-orange p-6 rounded-2xl relative overflow-hidden text-white shadow-2xl">
                     <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
                     <Briefcase className="w-10 h-10 mb-4 opacity-50" />
                     <h4 className="text-xl font-bold mb-2">Corporate Lawyer</h4>
@@ -436,7 +440,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="aspect-[4/5] rounded-2xl overflow-hidden relative border border-white/10">
+                  <div className="animate-float-delay-2 aspect-[4/5] rounded-2xl overflow-hidden relative border border-white/10">
                     <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Law" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
@@ -444,7 +448,7 @@ export default function App() {
                       <p className="text-white/70 text-xs uppercase tracking-widest font-semibold">Top 3 NLU</p>
                     </div>
                   </div>
-                  <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/10 transition-colors">
+                  <div className="animate-float-delay-3 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/10 transition-colors">
                     <h4 className="text-xl font-bold mb-2">Judiciary & IAS</h4>
                     <p className="text-white/60 text-sm">A strong foundation for UPSC & Judiciary.</p>
                   </div>
@@ -458,7 +462,7 @@ export default function App() {
             <FadeIn className="order-2 lg:order-1">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <div className="aspect-[4/5] rounded-2xl overflow-hidden relative border border-white/10">
+                  <div className="animate-float-delay-2 aspect-[4/5] rounded-2xl overflow-hidden relative border border-white/10">
                     <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Management" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
@@ -466,19 +470,19 @@ export default function App() {
                       <p className="text-white/70 text-xs uppercase tracking-widest font-semibold">5-Year IPM Program</p>
                     </div>
                   </div>
-                  <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/10 transition-colors">
+                  <div className="animate-float-delay-4 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/10 transition-colors">
                     <h4 className="text-xl font-bold mb-2">Finance Elite</h4>
                     <p className="text-white/60 text-sm">Investment Banking & PE paths.</p>
                   </div>
                 </div>
                 <div className="space-y-4 pt-12">
-                  <div className="bg-laex-orange p-6 rounded-2xl relative overflow-hidden text-white shadow-2xl">
+                  <div className="animate-float-delay-5 bg-laex-orange p-6 rounded-2xl relative overflow-hidden text-white shadow-2xl">
                     <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
                     <TrendingUp className="w-10 h-10 mb-4 opacity-50" />
                     <h4 className="text-xl font-bold mb-2">Global Consulting</h4>
                     <p className="text-white/90 font-medium">McKinsey, BCG, Bain & More.</p>
                   </div>
-                  <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/10 transition-colors">
+                  <div className="animate-float-delay-6 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/10 transition-colors">
                     <div className="text-4xl font-serif text-white opacity-20 mb-2 absolute right-4 top-4 font-bold">02</div>
                     <h4 className="text-xl font-bold mb-2">IIM Rohtak</h4>
                     <p className="text-white/60 text-sm">Direct entry right after 12th.</p>
@@ -546,11 +550,11 @@ export default function App() {
               <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=2000" className="absolute inset-0 w-full h-full object-cover opacity-40" alt="Mentorship" />
               <div className="absolute inset-0 bg-gradient-to-t from-laex-dark via-laex-dark/40 to-transparent"></div>
               <div className="absolute inset-0 bg-gradient-to-l from-laex-dark/90 via-transparent to-transparent w-1/2 ml-auto"></div>
-              <div className="relative z-10 max-w-4xl ml-auto text-right flex flex-col items-end">
+              <motion.div style={{ opacity: slide2TextOpacity, y: slide2TextY }} className="relative z-10 max-w-4xl ml-auto text-right flex flex-col items-end">
                 <div className="inline-flex px-3 py-1 bg-laex-blue border border-white/20 text-white rounded-full text-xs font-bold tracking-widest uppercase mb-6 shadow-md backdrop-blur-md">1-on-1 Mentorship</div>
                 <h2 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6">Guided by <br />the Best</h2>
                 <p className="text-xl text-white/80 max-w-2xl text-right">Daily interactions with IIM alumni and NLU graduates who have walked the path to success.</p>
-              </div>
+              </motion.div>
             </div>
 
             {/* Slide 3 - Transitions to Light Theme */}
@@ -709,16 +713,42 @@ export default function App() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center cursor-default">
             <FadeIn>
-              <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Library" className="rounded-3xl w-full h-64 object-cover border border-slate-200 shadow-sm" />
-                  <img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&q=80&w=800" alt="Sports" className="rounded-3xl w-full h-48 object-cover border border-slate-200 shadow-sm" />
+                  <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Library" className="w-full h-64 object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-laex-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <h4 className="text-white font-bold">24/7 Library</h4>
+                      <p className="text-white/70 text-xs">Deep focus environment.</p>
+                    </div>
+                  </div>
+                  <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&q=80&w=800" alt="Sports" className="rounded-3xl w-full h-48 object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-laex-orange/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <h4 className="text-white font-bold">Sports Arena</h4>
+                      <p className="text-white/70 text-xs">Physical well-being.</p>
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-4 pt-12">
-                  <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80&w=800" alt="Classroom" className="rounded-3xl w-full h-48 object-cover border border-slate-200 shadow-sm" />
-                  <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800" alt="Hostel" className="rounded-3xl w-full h-64 object-cover border border-slate-200 shadow-sm" />
+                  <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80&w=800" alt="Classroom" className="rounded-3xl w-full h-48 object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-laex-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <h4 className="text-white font-bold">Smart Classrooms</h4>
+                      <p className="text-white/70 text-xs">AI-enabled learning.</p>
+                    </div>
+                  </div>
+                  <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800" alt="Hostel" className="rounded-3xl w-full h-64 object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-laex-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <h4 className="text-white font-bold">Safe Hostels</h4>
+                      <p className="text-white/70 text-xs">Your second home.</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
             </FadeIn>
 
             <div className="space-y-6">
@@ -774,7 +804,6 @@ export default function App() {
               </FadeIn>
             ))}
           </div>
-          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-laex-dark to-transparent pointer-events-none z-10"></div>
         </div>
         <SectionDivider fromColor="from-laex-dark" toColor="to-laex-light" height="h-32" />
       </section>
