@@ -25,12 +25,12 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
 
 const SectionDivider = ({ fromColor, toColor, height = "h-24" }: { fromColor: string, toColor: string, height?: string }) => (
   <div className={fromColor.replace('from-', 'bg-')}>
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, margin: "-100px" }}
       transition={{ duration: 1 }}
-      className={`w-full ${height} bg-gradient-to-b ${fromColor} ${toColor}`} 
+      className={`w-full ${height} bg-gradient-to-b ${fromColor} ${toColor}`}
     />
   </div>
 );
@@ -43,10 +43,10 @@ const Navbar = ({ isScrolled }: { isScrolled: boolean }) => (
       }`}
   >
     <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex justify-between items-center h-18">
+      <div className="flex justify-between items-center h-18">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="La Excellence Logo" className="h-18 w-auto object-contain" />
+          <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-18 w-auto object-contain scale-[4.00] origin-left" />
         </div>
 
         {/* Links */}
@@ -222,7 +222,7 @@ export default function App() {
             </div>
           </motion.div>
         </div>
-        
+
       </section>
 
       {/* Programs Section */}
@@ -249,7 +249,7 @@ export default function App() {
                 </div>
                 <h3 className="text-3xl font-serif font-bold text-laex-blue mb-4">INTER + CLAT</h3>
                 <p className="text-slate-600 mb-8 leading-relaxed">
-                  Complete Intermediate (MPC/BiPC/MEC) while receiving full CLAT coaching — without sacrificing either. The smartest way to enter India's premier National Law Universities.
+                  Complete Intermediate while receiving full CLAT coaching — without sacrificing either. The smartest way to enter India's premier National Law Universities.
                 </p>
                 <ul className="space-y-4 mb-10 flex-grow">
                   {[
@@ -330,7 +330,7 @@ export default function App() {
                 <p className="text-white/80 mb-10 leading-relaxed">Our expert counselors will help you understand which program is the right fit, what the journey looks like, and how to give your child the maximum advantage in cracking CLAT or IPMAT.</p>
 
                 <ul className="space-y-6">
-                  <li className="flex items-center gap-4"><Flame className="w-6 h-6 text-laex-orange" /> <span className="font-medium text-white/90">Limited Seats Available (2025-26 Batch)</span></li>
+                  <li className="flex items-center gap-4"><Flame className="w-6 h-6 text-laex-orange" /> <span className="font-medium text-white/90">Limited Seats Available (2026-28 Batch)</span></li>
                   <li className="flex items-center gap-4"><CheckCircle2 className="w-6 h-6 text-green-400" /> <span className="font-medium text-white/90">Free Counseling Session (No Obligation)</span></li>
                   <li className="flex items-center gap-4"><Phone className="w-6 h-6 text-blue-400" /> <span className="font-medium text-white/90">Response Within 2 Hours Guaranteed</span></li>
                   <li className="flex items-center gap-4"><Building2 className="w-6 h-6 text-purple-400" /> <span className="font-medium text-white/90">Hostel Seats Filling Fast</span></li>
@@ -591,6 +591,94 @@ export default function App() {
         </div>
       </section>
 
+      {/* Why Most CLAT Coaching Fails Students */}
+      <section className="bg-slate-50 relative py-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-laex-blue mb-6">
+                Why Most CLAT Coaching <span className="text-laex-orange">Fails Students</span>
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Most institutes teach the same content to everyone — regardless of strengths, gaps, or learning pace. Here's what's broken, and how we fix it.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Problem Side */}
+            <FadeIn delay={0.1}>
+              <div className="bg-white rounded-3xl p-8 md:p-10 border border-red-100 shadow-sm h-full relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-bl-full -z-10 opacity-50"></div>
+                <div className="flex items-center gap-4 mb-8 pb-6 border-b border-slate-100">
+                  <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500 shrink-0">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-800">The Typical Coaching Problem</h3>
+                </div>
+                <ul className="space-y-5">
+                  {[
+                    "One-size-fits-all teaching with no personalization",
+                    "No diagnostic system to map a student's actual gaps",
+                    "No scientific tracking — just \"solve more questions\"",
+                    "No parent communication loop or progress visibility",
+                    "Board exam preparation ignored, creating academic stress",
+                    "Overloaded batches — students feel invisible",
+                    "No mentorship from toppers or alumni",
+                    "Stress unaddressed — mental burnout common by Year 2"
+                  ].map((item, i) => (
+                    <li key={i} className="flex gap-4 items-start">
+                      <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg className="w-3 h-3 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </div>
+                      <span className="text-slate-600 font-medium leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
+
+            {/* Solution Side */}
+            <FadeIn delay={0.2}>
+              <div className="bg-laex-blue text-white rounded-3xl p-8 md:p-10 shadow-xl h-full relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-laex-orange/20 rounded-bl-full pointer-events-none"></div>
+                <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/10 relative z-10">
+                  <div className="w-12 h-12 bg-laex-orange/20 rounded-xl flex items-center justify-center text-laex-orange shrink-0">
+                    <CheckCircle2 className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-2xl font-bold">The La Excellence Difference</h3>
+                </div>
+                <ul className="space-y-5 relative z-10">
+                  {[
+                    "AI-powered diagnostic test at day 1 — know your gaps precisely",
+                    "LaEx Reading Matrix — skills mapped, weak points targeted",
+                    "Scientific Metric Framework — data-driven progression tracking",
+                    "Daily LaEx Spark — fresh newspaper & editorial based content",
+                    "One-on-one mentorship + Topper Mentors from NLUs",
+                    "Board + CLAT calendar integrated — no double burden",
+                    "Parent-Student-Mentor ecosystem with regular feedback loops",
+                    "Empathetic, stress-free environment — mindset coaching included"
+                  ].map((item, i) => (
+                    <li key={i} className="flex gap-4 items-start">
+                      <div className="w-6 h-6 rounded-full bg-laex-orange/20 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg className="w-3 h-3 text-laex-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="text-white/90 font-medium leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* Why La Excellence */}
       <section id="why-us" className="bg-white relative z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -630,7 +718,94 @@ export default function App() {
           </div>
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none z-10"></div>
         </div>
-        <SectionDivider fromColor="from-white" toColor="to-laex-light" height="h-32" />
+        <SectionDivider fromColor="from-white" toColor="to-laex-dark" height="h-32" />
+      </section>
+
+      {/* 5-Level Journey */}
+      <section className="bg-laex-dark text-white py-24 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-current text-white"><polygon points="0,100 100,0 100,100" /></svg>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <FadeIn>
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+                From Curious Learner <br />
+                <span className="text-laex-orange">to CLAT Topper.</span>
+              </h2>
+              <p className="text-white/80 text-lg leading-relaxed">
+                Every student follows our structured 5-level journey — designed so growth is measurable, not accidental.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid lg:grid-cols-12 gap-12">
+            {/* Left side - Core belief & stats */}
+            <div className="lg:col-span-4 space-y-8">
+              <FadeIn delay={0.1}>
+                <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+                  <div className="text-laex-orange font-bold text-sm tracking-widest uppercase mb-4">Our Core Belief</div>
+                  <p className="text-xl font-serif italic leading-relaxed text-white/90">
+                    "Every student has a unique learning fingerprint. Our job is to find it — and optimize it."
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors cursor-default">
+                    <div className="text-4xl font-bold text-laex-orange mb-2">5</div>
+                    <div className="text-xs uppercase tracking-widest font-bold text-white/60">Journey Levels</div>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors cursor-default">
+                    <div className="text-4xl font-bold text-laex-orange mb-2">100%</div>
+                    <div className="text-xs uppercase tracking-widest font-bold text-white/60">Data-Tracked</div>
+                  </div>
+                  <div className="col-span-2 bg-laex-orange rounded-2xl p-6 text-center shadow-lg shadow-laex-orange/20 hover:bg-orange-600 transition-colors cursor-default">
+                    <div className="text-3xl font-bold text-white mb-1">1:1</div>
+                    <div className="text-sm uppercase tracking-widest font-bold text-white/90">Mentor Sessions</div>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Right side - The Journey timeline */}
+            <div className="lg:col-span-8 relative">
+              <div className="absolute left-6 top-8 bottom-8 w-0.5 bg-white/10 hidden md:block"></div>
+              <div className="space-y-8 md:space-y-12">
+                {[
+                  { level: "01", name: "Ignition", desc: "Diagnostics, skill mapping, baseline assessment. Understand where you are before building where you're going.", tag: "Diagnostic", tag2: "Know your gaps" },
+                  { level: "02", name: "Foundation", desc: "Core concepts across all 5 subjects. Eclectic English, Logical Launchpad, Curious Current Affairs modules.", tag: "Core Skills" },
+                  { level: "03", name: "Exam Level", desc: "Full syllabus coverage. Weekly mocks begin. Sectional tests. Detailed analytics reviewed with mentor.", tag: "Accuracy" },
+                  { level: "04", name: "Accuracy", desc: "Error analysis & precision drills. Cut down silly mistakes. Maximize accuracy before building speed.", tag: "Speed", tag2: "Build precision" },
+                  { level: "05", name: "Topper", desc: "Full-length mocks under exam conditions. Time optimization. Rank simulation. NLU interview readiness.", tag: "Rank", tag2: "NLU Selection" }
+                ].map((step, i) => (
+                  <FadeIn delay={i * 0.1 + 0.2} key={i}>
+                    <div className="relative md:pl-16 group">
+                      <div className="absolute left-0 top-1 w-12 h-12 rounded-full bg-laex-dark border-4 border-white/10 hidden md:flex items-center justify-center font-bold text-laex-orange group-hover:border-laex-orange transition-colors z-10">
+                        {step.level}
+                      </div>
+                      <div className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl group-hover:bg-white/10 transition-colors">
+                        <div className="flex flex-wrap items-center gap-4 mb-4">
+                          <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+                            <span className="md:hidden text-laex-orange">{step.level}.</span>
+                            {step.name}
+                          </h3>
+                          <div className="flex flex-wrap gap-2">
+                            {step.tag && <span className="px-3 py-1 bg-laex-orange/20 text-laex-orange rounded-full text-xs font-bold uppercase tracking-wider">{step.tag}</span>}
+                            {step.tag2 && <span className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider">{step.tag2}</span>}
+                          </div>
+                        </div>
+                        <p className="text-white/70 leading-relaxed font-medium">{step.desc}</p>
+                      </div>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <SectionDivider fromColor="from-laex-dark" toColor="to-laex-light" height="h-32" />
       </section>
 
       {/* Founders Section */}
@@ -658,7 +833,7 @@ export default function App() {
                     <div className="inline-flex px-3 py-1 bg-laex-orange/10 text-laex-orange rounded-full text-xs font-bold tracking-widest uppercase mb-6 w-max">Chairman's Message</div>
                     <h3 className="text-3xl md:text-4xl font-bold text-laex-blue mb-2">Dr. Ram Babu P</h3>
                     <p className="text-laex-orange font-bold mb-8 text-lg uppercase tracking-wider">Chairman, La Excellence IAS Academy</p>
-                    
+
                     <div className="space-y-6 text-slate-600 leading-relaxed italic text-lg">
                       <p>"Dear Students, I consider myself the First Employee of La Excellence, marking the beginning of a journey that has been both meaningful and transformative. From the very start, this institution has stood for more than just coaching—it reflects a shared mission to nurture aspirants into confident, capable, and compassionate civil servants."</p>
                       <p>"Over the years, I’ve had the privilege of witnessing countless aspirants secure ranks in the Civil Services Examination, turning their dedication and discipline into success stories that continue to inspire many."</p>
@@ -672,17 +847,17 @@ export default function App() {
             {/* Other Directors */}
             <div className="grid md:grid-cols-2 gap-8">
               {[
-                { 
-                  name: "Anush Reddy", 
-                  role: "Dean, IAS Integrated Programme", 
-                  desc: "As the Dean, I have spent the past ten years mentoring aspirants through a comprehensive approach that blends academic excellence with discipline, consistency, and personal growth. I believe that success in the Civil Services is shaped by perseverance, focus, and a deep sense of purpose. My constant endeavour is to help students grow into well-rounded individuals who balance learning with reflection, ambition with humility, and preparation with perseverance.", 
-                  img: "/founders/image2.jpeg" 
+                {
+                  name: "Anush Reddy",
+                  role: "Dean, IAS Integrated Programme",
+                  desc: "As the Dean, I have spent the past ten years mentoring aspirants through a comprehensive approach that blends academic excellence with discipline, consistency, and personal growth. I believe that success in the Civil Services is shaped by perseverance, focus, and a deep sense of purpose. My constant endeavour is to help students grow into well-rounded individuals who balance learning with reflection, ambition with humility, and preparation with perseverance.",
+                  img: "/founders/image2.jpeg"
                 },
-                { 
-                  name: "Ch Srinivasa Reddy", 
-                  role: "Director", 
-                  desc: "With nearly three decades in education, including over eight years in Integrated IAS training, I have dedicated my life to nurturing young minds and building institutions grounded in excellence and integrity. My vision has always been to create learning spaces that inspire curiosity, discipline, and purpose. I have a deep desire to empower students—to help them believe in themselves, think boldly, and grow with confidence and compassion.", 
-                  img: "/founders/image3.png" 
+                {
+                  name: "Ch Srinivasa Reddy",
+                  role: "Director",
+                  desc: "With nearly three decades in education, including over eight years in Integrated IAS training, I have dedicated my life to nurturing young minds and building institutions grounded in excellence and integrity. My vision has always been to create learning spaces that inspire curiosity, discipline, and purpose. I have a deep desire to empower students—to help them believe in themselves, think boldly, and grow with confidence and compassion.",
+                  img: "/founders/image3.png"
                 }
               ].map((founder, i) => (
                 <FadeIn delay={i * 0.1} key={founder.name}>
@@ -760,42 +935,42 @@ export default function App() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center cursor-default">
             <FadeIn>
-                <div className="space-y-4">
-                  <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Library" className="w-full h-64 object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-laex-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <h4 className="text-white font-bold">24/7 Library</h4>
-                      <p className="text-white/70 text-xs">Deep focus environment.</p>
-                    </div>
-                  </div>
-                  <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&q=80&w=800" alt="Sports" className="rounded-3xl w-full h-48 object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-laex-orange/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <h4 className="text-white font-bold">Sports Arena</h4>
-                      <p className="text-white/70 text-xs">Physical well-being.</p>
-                    </div>
+              <div className="space-y-4">
+                <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Library" className="w-full h-64 object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-laex-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <h4 className="text-white font-bold">24/7 Library</h4>
+                    <p className="text-white/70 text-xs">Deep focus environment.</p>
                   </div>
                 </div>
-                <div className="space-y-4 pt-12">
-                  <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80&w=800" alt="Classroom" className="rounded-3xl w-full h-48 object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-laex-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <h4 className="text-white font-bold">Smart Classrooms</h4>
-                      <p className="text-white/70 text-xs">AI-enabled learning.</p>
-                    </div>
-                  </div>
-                  <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800" alt="Hostel" className="rounded-3xl w-full h-64 object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-laex-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <h4 className="text-white font-bold">Safe Hostels</h4>
-                      <p className="text-white/70 text-xs">Your second home.</p>
-                    </div>
+                <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                  <img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&q=80&w=800" alt="Sports" className="rounded-3xl w-full h-48 object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-laex-orange/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <h4 className="text-white font-bold">Sports Arena</h4>
+                    <p className="text-white/70 text-xs">Physical well-being.</p>
                   </div>
                 </div>
+              </div>
+              <div className="space-y-4 pt-12">
+                <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                  <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80&w=800" alt="Classroom" className="rounded-3xl w-full h-48 object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-laex-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <h4 className="text-white font-bold">Smart Classrooms</h4>
+                    <p className="text-white/70 text-xs">AI-enabled learning.</p>
+                  </div>
+                </div>
+                <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                  <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800" alt="Hostel" className="rounded-3xl w-full h-64 object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-laex-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <h4 className="text-white font-bold">Safe Hostels</h4>
+                    <p className="text-white/70 text-xs">Your second home.</p>
+                  </div>
+                </div>
+              </div>
             </FadeIn>
 
             <div className="space-y-6">
@@ -825,31 +1000,107 @@ export default function App() {
         <SectionDivider fromColor="from-slate-50" toColor="to-laex-dark" height="h-32" />
       </section>
 
-      {/* Philosophy (Pillars) */}
+      {/* Daily Routine / What Happens Every Day */}
       <section className="bg-laex-dark text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-current text-white"><polygon points="0,100 100,0 100,100" /></svg>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24">
           <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">The Four Pillars of <span className="text-laex-orange">La Excellence</span></h2>
-            <p className="text-white/70 text-lg max-w-2xl mb-16">At La Excellence, we believe a student's journey to excellence is not just academic — it is a transformation of character, discipline, and purpose.</p>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
+                What Happens Every Day <br />
+                <span className="text-laex-orange">Inside La Excellence</span>
+              </h2>
+              <p className="text-white/70 text-lg">
+                A structured, dynamic, and empathetic learning environment — where no day is wasted.
+              </p>
+            </div>
           </FadeIn>
-          <div className="grid md:grid-cols-4 gap-6 hover:gap-8 transition-all duration-500">
-            {[
-              { san: "गुरु", title: "Guru", desc: "Every student deserves a true mentor — not just a teacher. Wisdom, patience, and personal investment." },
-              { san: "गुरुकुलम्", title: "Gurukulam", desc: "Our residential campus recreates the ancient Gurukul — a focused, immersive learning environment." },
-              { san: "साधना", title: "Sadhana", desc: "Excellence is a daily practice. Structured routines, daily assessments, and consistent study cycles." },
-              { san: "सम्पूर्णता", title: "Sampurnata", desc: "Completeness. Building students ready for entrance exams, and professional leadership roles." }
-            ].map((p, i) => (
-              <FadeIn delay={i * 0.1} key={i}>
-                <div className="border border-white/10 rounded-3xl p-8 bg-white/5 hover:bg-laex-orange group transition-all h-full cursor-default">
-                  <div className="text-4xl font-serif text-laex-orange group-hover:text-white/20 font-bold mb-4 transition-colors">{p.san}</div>
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-white">{p.title}</h3>
-                  <p className="text-sm text-white/70 group-hover:text-white/90 leading-relaxed font-medium">{p.desc}</p>
+
+          <div className="grid lg:grid-cols-12 gap-12">
+
+            {/* Left Column: Schedule & Modules */}
+            <div className="lg:col-span-8 space-y-12">
+
+              {/* Schedule */}
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white font-bold text-xs tracking-widest uppercase mb-8">
+                  <Clock className="w-4 h-4 text-laex-orange" /> SAMPLE DAILY SCHEDULE
                 </div>
-              </FadeIn>
-            ))}
+
+                <div className="space-y-4">
+                  {[
+                    { time: "7:00 – 8:30 AM", title: "LaEx Spark", desc: "Editorial + newspaper analysis, GK quiz" },
+                    { time: "9:00 – 12:00 PM", title: "Core Class Sessions", desc: "Subject-wise concept & practice" },
+                    { time: "2:00 – 4:00 PM", title: "Sectional Tests & Review", desc: "Analytics + mentor feedback loop" },
+                    { time: "5:00 – 6:30 PM", title: "Doubt + Mentor Session", desc: "1-on-1 or group mentorship blocks" }
+                  ].map((item, i) => (
+                    <FadeIn delay={i * 0.1} key={i}>
+                      <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                        <div className="md:w-48 shrink-0 text-laex-orange font-bold font-serif text-lg">{item.time}</div>
+                        <div>
+                          <h4 className="text-xl font-bold mb-1">{item.title}</h4>
+                          <p className="text-white/70 text-sm">{item.desc}</p>
+                        </div>
+                      </div>
+                    </FadeIn>
+                  ))}
+                </div>
+              </div>
+
+              {/* Foundation Modules */}
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white font-bold text-xs tracking-widest uppercase mb-8">
+                  <Star className="w-4 h-4 text-laex-orange" /> FOUNDATION PHASE SIGNATURE MODULES
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <FadeIn delay={0.1}>
+                    <div className="p-8 rounded-3xl bg-laex-orange text-white shadow-lg shadow-laex-orange/20 h-full">
+                      <h4 className="text-2xl font-bold mb-3">Eclectic English</h4>
+                      <p className="text-white/90 text-sm leading-relaxed font-medium">Advanced comprehension & vocabulary framework</p>
+                    </div>
+                  </FadeIn>
+                  <FadeIn delay={0.2}>
+                    <div className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors h-full">
+                      <h4 className="text-2xl font-bold mb-3 text-laex-orange">Logical Launchpad</h4>
+                      <p className="text-white/70 text-sm leading-relaxed font-medium">Reasoning patterns, critical thinking from ground up</p>
+                    </div>
+                  </FadeIn>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Subjects */}
+            <div className="lg:col-span-4">
+              <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 lg:sticky lg:top-24">
+                <div className="text-laex-orange font-bold text-xs tracking-widest uppercase mb-8 border-b border-white/10 pb-4">
+                  Subjects Covered
+                </div>
+
+                <div className="space-y-6">
+                  {[
+                    { icon: "📖", title: "English & Reading Comprehension" },
+                    { icon: "🧠", title: "Logical Reasoning" },
+                    { icon: "⚖", title: "Legal Reasoning & Principles" },
+                    { icon: "📐", title: "Quantitative Techniques" },
+                    { icon: "🌍", title: "Current Affairs & GK" }
+                  ].map((sub, i) => (
+                    <FadeIn delay={i * 0.1} key={i}>
+                      <div className="flex items-center gap-5 group p-2 hover:bg-white/5 rounded-xl transition-colors">
+                        <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shrink-0">
+                          {sub.icon}
+                        </div>
+                        <h4 className="font-bold text-white/90 group-hover:text-white transition-colors">{sub.title}</h4>
+                      </div>
+                    </FadeIn>
+                  ))}
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
         <SectionDivider fromColor="from-laex-dark" toColor="to-laex-light" height="h-32" />
@@ -929,76 +1180,75 @@ export default function App() {
       {/* Location Section */}
       <section id="location" className="bg-laex-light relative py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-slate-200 flex flex-col lg:flex-row min-h-[600px]">
+          <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-slate-200 flex flex-col lg:flex-row min-h-[450px]">
             {/* Map Area */}
-            <div className="lg:w-7/12 h-[400px] lg:h-auto relative bg-slate-100">
-               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.111874984534!2d78.4839!3d17.5255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb910000000001%3A0x0!2sKompally%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+            <div className="lg:w-1/2 h-[350px] lg:h-auto relative bg-slate-100">
+              <iframe
+                src="https://maps.google.com/maps?q=La+Excellence+IAS+Academy+Himayat+Nagar&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 className="absolute inset-0 w-full h-full grayscale opacity-80 contrast-125 brightness-100 hover:grayscale-0 transition-all duration-700"
-                style={{ border: 0 }} 
-                allowFullScreen={true} 
+                style={{ border: 0 }}
+                allowFullScreen={true}
                 loading="lazy"
                 title="Google Maps Location"
               ></iframe>
             </div>
-            
+
             {/* Info Area */}
-            <div className="lg:w-5/12 p-12 lg:p-16 flex flex-col justify-center bg-laex-blue text-white relative">
+            <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center bg-laex-blue text-white relative">
               <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
                 <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-current text-white"><polygon points="100,100 0,100 100,0" /></svg>
               </div>
               <FadeIn>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-bold text-sm tracking-wide mb-8 border border-white/20">
-                  <MapPin className="w-4 h-4 text-laex-orange" /> VISIT OUR CAMPUS
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white font-bold text-xs tracking-wide mb-6 border border-white/20">
+                  <MapPin className="w-3 h-3 text-laex-orange" /> VISIT OUR CAMPUS
                 </div>
-                <h2 className="text-4xl font-serif font-bold mb-6">Come Say <span className="text-laex-orange">Hello.</span></h2>
-                <p className="text-white/80 mb-10 leading-relaxed">
-                  Located in the serene and academic-friendly environment of Kompally, our residential campus provides the perfect atmosphere for deep focus and competitive preparation.
+                <h2 className="text-3xl font-serif font-bold mb-4">Come Say <span className="text-laex-orange">Hello.</span></h2>
+                <p className="text-white/80 mb-8 text-sm leading-relaxed">
+                  Located in the heart of the city at Himayat Nagar, our campus provides the perfect atmosphere for deep focus and competitive preparation.
                 </p>
-                
-                <div className="space-y-8">
+
+                <div className="space-y-6">
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
-                       <MapPin className="w-6 h-6 text-laex-orange" />
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                      <MapPin className="w-5 h-5 text-laex-orange" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-xl mb-1">Main Residential Campus</h4>
-                      <p className="text-white/60 text-sm">Jayabheri Park Rd, Kompally, Hyderabad, Telangana 500100</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
-                       <Clock className="w-6 h-6 text-laex-orange" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-xl mb-1">Visiting Hours</h4>
-                      <p className="text-white/60 text-sm">Mon - Sat: 9:00 AM - 7:00 PM<br/>Sun: 10:00 AM - 2:00 PM</p>
+                      <h4 className="font-bold text-lg mb-1">Himayat Nagar Branch</h4>
+                      <p className="text-white/60 text-sm">Himayat Nagar, Hyderabad, Telangana</p>
                     </div>
                   </div>
 
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
-                       <Phone className="w-6 h-6 text-laex-orange" />
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                      <Clock className="w-5 h-5 text-laex-orange" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-xl mb-1">Call for Admissions</h4>
+                      <h4 className="font-bold text-lg mb-1">Visiting Hours</h4>
+                      <p className="text-white/60 text-sm">Mon - Sat: 9:00 AM - 7:00 PM<br />Sun: 10:00 AM - 2:00 PM</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                      <Phone className="w-5 h-5 text-laex-orange" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg mb-1">Call for Admissions</h4>
                       <div className="flex flex-col gap-1 mt-1">
-                        <a href="tel:+919000296424" className="text-white hover:text-laex-orange transition-colors font-medium">+91 90002 96424</a>
-                        <a href="tel:+919247903001" className="text-white hover:text-laex-orange transition-colors font-medium">+91 92479 03001</a>
-                        <a href="tel:+919247903002" className="text-white hover:text-laex-orange transition-colors font-medium">+91 92479 03002</a>
+                        <a href="tel:+919000296424" className="text-white hover:text-laex-orange transition-colors text-sm font-medium">+91 90002 96424</a>
+                        <a href="tel:+919247903001" className="text-white hover:text-laex-orange transition-colors text-sm font-medium">+91 92479 03001</a>
                       </div>
                     </div>
                   </div>
                 </div>
-                
-                <a 
-                  href="https://www.google.com/maps/search/La+Excellence+IAS+Academy+Kompally+Hyderabad" 
-                  target="_blank" 
+
+                <a
+                  href="https://maps.app.goo.gl/ibpxHKCzGC82tJrWA?g_st=ac"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-12 inline-flex items-center gap-3 bg-laex-orange hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-xl shadow-laex-orange/20 group w-max"
+                  className="mt-8 inline-flex items-center gap-2 bg-laex-orange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-lg transition-all shadow-lg shadow-laex-orange/20 group w-max text-sm"
                 >
-                  Get Directions <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  Get Directions <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </FadeIn>
             </div>
