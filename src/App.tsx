@@ -4,12 +4,12 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import {
   Building2, Users, Target, BookOpen, Briefcase, Scale, Globe,
   CheckCircle2, ArrowRight, Brain, Clock, BarChart3, GraduationCap,
   Shield, Flame, TrendingUp, MessageSquare, ChevronRight, Plus, Minus,
-  MapPin, Phone, Mail, Instagram, Linkedin, Youtube, Facebook, Star, Quote
+  MapPin, Phone, Mail, Instagram, Linkedin, Youtube, Facebook, Star, Quote, Menu, X
 } from 'lucide-react';
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => (
@@ -23,7 +23,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
   </motion.div>
 );
 
-const SectionDivider = ({ fromColor, toColor, height = "h-24" }: { fromColor: string, toColor: string, height?: string }) => (
+const SectionDivider = ({ fromColor, toColor, height = "h-16 md:h-24 lg:h-32" }: { fromColor: string, toColor: string, height?: string }) => (
   <div className={fromColor.replace('from-', 'bg-')}>
     <motion.div
       initial={{ opacity: 0 }}
@@ -33,46 +33,6 @@ const SectionDivider = ({ fromColor, toColor, height = "h-24" }: { fromColor: st
       className={`w-full ${height} bg-gradient-to-b ${fromColor} ${toColor}`}
     />
   </div>
-);
-
-const Navbar = ({ isScrolled }: { isScrolled: boolean }) => (
-  <motion.nav
-    className={`w-full transition-all duration-500 border-b ${isScrolled
-      ? 'bg-white/95 border-slate-200/50 shadow-sm py-2 backdrop-blur-xl'
-      : 'bg-transparent border-white/5 py-3 backdrop-blur-sm'
-      }`}
-  >
-    <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12">
-      <div className="flex justify-between items-center h-18">
-        {/* Logo */}
-        <div className="flex items-center gap-3">
-          <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-18 w-auto object-contain scale-[4.00] origin-left" />
-        </div>
-
-        {/* Links */}
-        <div className={`hidden lg:flex flex-1 justify-center gap-12 font-sans tracking-[0.15em] text-xs uppercase font-bold transition-colors duration-500 ${isScrolled ? 'text-slate-600' : 'text-white/80'}`}>
-          <a href="#why-us" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>About</a>
-          <a href="#programs" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Programs</a>
-          <a href="#results" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Results</a>
-          <a href="#apply" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Contact</a>
-        </div>
-
-        {/* Action area / Highlights */}
-        <div className="flex items-center gap-3 md:gap-4">
-          <div className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full border ${isScrolled ? 'border-laex-orange text-laex-orange bg-laex-orange/5' : 'border-white/30 text-white bg-white/10'} text-xs font-bold tracking-wider uppercase`}>
-            <span className="relative flex h-2 w-2">
-              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isScrolled ? 'bg-laex-orange' : 'bg-white'}`}></span>
-              <span className={`relative inline-flex rounded-full h-2 w-2 ${isScrolled ? 'bg-laex-orange' : 'bg-white'}`}></span>
-            </span>
-            Admissions Open (2026-28)
-          </div>
-          <a href="#apply" className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all ${isScrolled ? 'bg-laex-orange text-white hover:bg-orange-600 shadow-md' : 'bg-white text-laex-blue hover:bg-gray-100 hover:scale-105'}`}>
-            Free Diagnostic Test
-          </a>
-        </div>
-      </div>
-    </div>
-  </motion.nav>
 );
 
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
@@ -98,6 +58,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 export default function App() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,6 +67,99 @@ export default function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const Navbar = ({ isScrolled }: { isScrolled: boolean }) => (
+    <motion.nav
+      className={`w-full transition-all duration-500 border-b fixed top-0 z-[70] ${isScrolled
+        ? 'bg-white/95 border-slate-200/50 shadow-sm py-2 backdrop-blur-xl'
+        : 'bg-transparent border-white/5 py-3 backdrop-blur-sm'
+        }`}
+    >
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="flex justify-between items-center h-18">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-12 md:h-18 w-auto object-contain md:scale-[4.00] origin-left" />
+          </div>
+
+          {/* Desktop Links */}
+          <div className={`hidden lg:flex flex-1 justify-center gap-12 font-sans tracking-[0.15em] text-xs uppercase font-bold transition-colors duration-500 ${isScrolled ? 'text-slate-600' : 'text-white/80'}`}>
+            <a href="#why-us" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>About</a>
+            <a href="#programs" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Programs</a>
+            <a href="#results" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Results</a>
+            <a href="#apply" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Contact</a>
+          </div>
+
+          {/* Action area / Highlights */}
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border ${isScrolled ? 'border-laex-orange text-laex-orange bg-laex-orange/5' : 'border-white/30 text-white bg-white/10'} text-[10px] md:text-xs font-bold tracking-wider uppercase`}>
+              <span className="relative flex h-2 w-2">
+                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isScrolled ? 'bg-laex-orange' : 'bg-white'}`}></span>
+                <span className={`relative inline-flex rounded-full h-2 w-2 ${isScrolled ? 'bg-laex-orange' : 'bg-white'}`}></span>
+              </span>
+              <span className="hidden xs:inline">Admissions Open (2026-28)</span>
+              <span className="xs:hidden">Admissions Open</span>
+            </div>
+            <a href="#apply" className={`hidden xs:block px-4 py-2 rounded-full text-[10px] md:text-xs font-bold tracking-wider uppercase transition-all ${isScrolled ? 'bg-laex-orange text-white hover:bg-orange-600 shadow-md' : 'bg-white text-laex-blue hover:bg-gray-100 hover:scale-105'}`}>
+              Free Test
+            </a>
+            
+            {/* Mobile Menu Toggle */}
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`lg:hidden p-2 rounded-xl transition-colors ${isScrolled ? 'text-laex-blue hover:bg-slate-100' : 'text-white hover:bg-white/10'}`}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 shadow-xl overflow-hidden z-50"
+          >
+            <div className="flex flex-col p-6 gap-6">
+              {[
+                { name: "About", href: "#why-us" },
+                { name: "Programs", href: "#programs" },
+                { name: "Results", href: "#results" },
+                { name: "Contact", href: "#apply" }
+              ].map((link) => (
+                <a 
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-lg font-bold text-laex-blue hover:text-laex-orange transition-colors flex items-center justify-between"
+                >
+                  {link.name}
+                  <ChevronRight className="w-5 h-5 text-slate-300" />
+                </a>
+              ))}
+              <div className="pt-6 border-t border-slate-100 flex flex-col gap-4">
+                <div className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-laex-orange/5 border border-laex-orange/10">
+                  <div className="w-2 h-2 rounded-full bg-laex-orange animate-pulse"></div>
+                  <span className="text-sm font-bold text-laex-blue uppercase tracking-wider">Admissions Open 2026-28</span>
+                </div>
+                <a 
+                  href="#apply"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full bg-laex-orange text-white text-center py-4 rounded-2xl font-bold uppercase tracking-widest shadow-lg shadow-laex-orange/20"
+                >
+                  Book Free Diagnostic Test
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
+  );
 
   const heroImageY = useTransform(scrollY, [0, 1000], [0, 300]);
   const heroImageScale = useTransform(scrollY, [0, 1000], [1, 1.15]);
@@ -155,67 +209,74 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 z-20"></div>
         </motion.div>
 
-        <div className="max-w-full pl-6 pr-6 sm:pl-10 lg:pl-16 relative w-full z-30 flex flex-col h-[75vh] justify-end pb-8">
+        <div className="max-w-full px-6 sm:px-10 lg:px-16 relative w-full z-30 flex flex-col justify-end pb-12 lg:pb-20 flex-grow">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             style={{ opacity: heroOpacity, y: heroContentY }}
-            className="flex flex-col lg:flex-row justify-between lg:items-end gap-12"
+            className="flex flex-col lg:flex-row justify-between lg:items-end gap-10"
           >
             {/* Left Content */}
-            <div className="max-w-3xl flex-grow">
-              <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-sans text-white font-medium leading-[1.05] tracking-tight mb-6 uppercase">
-                Your Child's Journey to <br />
+            <div className="max-w-4xl flex-grow">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-sans text-white font-medium leading-[1.1] tracking-tight mb-6 uppercase">
+                Your Child's Journey to <br className="hidden sm:block" />
                 NLUs & IIMs Starts Here
               </h1>
-              <p className="text-base md:text-lg text-white/90 max-w-2xl font-light leading-relaxed mb-10">
-                A future-ready integrated learning model where Intermediate academics and CLAT/IPMAT entrance preparation work together through expert faculty, structured schedules, mock tests, and personalized mentoring.
+              <p className="text-sm md:text-lg text-white/90 max-w-2xl font-light leading-relaxed mb-8 md:mb-12">
+                A future-ready integrated learning model where Intermediate academics and CLAT/IPMAT entrance preparation work together through expert faculty, structured schedules, and personalized mentoring.
               </p>
 
-              <div className="flex flex-wrap items-center gap-8 mb-16">
-                <a href="#apply" className="bg-white hover:bg-slate-100 text-slate-900 px-8 py-4 font-bold transition-all text-sm uppercase tracking-wider">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-8 mb-10 md:mb-16">
+                <a href="#apply" className="bg-white hover:bg-slate-100 text-slate-900 px-8 py-4 font-bold transition-all text-sm uppercase tracking-wider text-center">
                   Get Started
                 </a>
-                <a href="#programs" className="text-white hover:text-white/80 font-bold transition-all text-sm uppercase tracking-wider border-b-[3px] border-white pb-1">
+                <a href="#programs" className="text-white hover:text-white/80 font-bold transition-all text-sm uppercase tracking-wider border-b-2 border-white pb-1 w-max mx-auto sm:mx-0">
                   Explore Programs
                 </a>
               </div>
 
+              {/* Mobile Campus Card (Visible only on small screens) */}
+              <div className="lg:hidden mb-10">
+                <a href="#location" className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl">
+                  <div className="w-10 h-10 bg-laex-orange/20 rounded-xl flex items-center justify-center text-laex-orange shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-sm">Himayat Nagar Campus</h3>
+                    <p className="text-white/60 text-xs">Heart of the city • Day Scholar</p>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 ml-auto" />
+                </a>
+              </div>
+
               {/* Progress Slider Indicator */}
-              <div className="flex items-center gap-6 w-full max-w-md mt-12">
-                <span className="text-white font-bold text-sm tracking-widest">0{heroImgIndex + 1}</span>
-                <div className="h-[2px] bg-white/30 flex-grow relative">
-                  <div className="absolute top-0 left-0 h-full bg-white transition-all duration-500 ease-out" style={{ width: `${((heroImgIndex + 1) / heroImages.length) * 100}%` }}></div>
+              <div className="flex items-center gap-4 w-full max-w-xs mt-4 md:mt-12">
+                <span className="text-white font-bold text-xs tracking-widest opacity-60">0{heroImgIndex + 1}</span>
+                <div className="h-[1px] bg-white/20 flex-grow relative">
+                  <div className="absolute top-0 left-0 h-full bg-laex-orange transition-all duration-500 ease-out shadow-[0_0_8px_rgba(249,115,22,0.8)]" style={{ width: `${((heroImgIndex + 1) / heroImages.length) * 100}%` }}></div>
                 </div>
-                <span className="text-white font-bold text-sm tracking-widest">0{heroImages.length}</span>
+                <span className="text-white font-bold text-xs tracking-widest opacity-60">0{heroImages.length}</span>
               </div>
             </div>
 
-            {/* Right Cards */}
-            <div className="hidden lg:flex flex-col items-end justify-end h-full space-y-auto pt-12 pb-4">
-              {/* Location/Program Card Bottom Right */}
-              <a href="#location" className="block bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-[2rem] w-80 shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-all cursor-pointer shrink-0 mt-32">
-                <div className="absolute top-8 right-8 w-12 h-12 bg-black/40 rounded-full flex items-center justify-center text-white/80 group-hover:bg-black/60 transition-all pointer-events-none">
-                  <svg className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+            {/* Desktop Right Card */}
+            <div className="hidden lg:flex flex-col items-end justify-end pb-4">
+              <a href="#location" className="block bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-[2rem] w-80 shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-all cursor-pointer">
+                <div className="absolute top-8 right-8 w-10 h-10 bg-black/40 rounded-full flex items-center justify-center text-white/80 group-hover:bg-laex-orange group-hover:text-white transition-all">
+                  <ArrowRight className="w-5 h-5" />
                 </div>
-                <div className="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
-                  <svg className="w-7 h-7 text-laex-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
+                <div className="mb-6">
+                  <MapPin className="w-8 h-8 text-laex-orange" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">Himayat Nagar Campus</h3>
                 <p className="text-white/80 text-sm leading-relaxed">
-                  Located in the heart of the city at Himayat Nagar, our campus provides the perfect atmosphere for deep focus and competitive preparation.
+                  Located in the heart of the city at Himayat Nagar, our campus provides the perfect atmosphere for focus.
                 </p>
               </a>
             </div>
           </motion.div>
         </div>
-
       </section>
 
       {/* Programs Section */}
@@ -928,37 +989,37 @@ export default function App() {
             <FadeIn>
               <div className="space-y-4">
                 <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Library" className="w-full h-64 object-cover" />
+                  <img src="/infra/ai lab.png" alt="AI Lab" className="w-full h-64 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-laex-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <h4 className="text-white font-bold">24/7 Library</h4>
-                    <p className="text-white/70 text-xs">Deep focus environment.</p>
+                    <h4 className="text-white font-bold">AI-Powered Lab</h4>
+                    <p className="text-white/70 text-xs">Modern technology for advanced learning.</p>
                   </div>
                 </div>
                 <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&q=80&w=800" alt="Sports" className="rounded-3xl w-full h-48 object-cover" />
+                  <img src="/infra/canteen.png" alt="Cafeteria" className="rounded-3xl w-full h-48 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-laex-orange/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <h4 className="text-white font-bold">Sports Arena</h4>
-                    <p className="text-white/70 text-xs">Physical well-being.</p>
+                    <h4 className="text-white font-bold">Hygienic Cafeteria</h4>
+                    <p className="text-white/70 text-xs">Nutritious meals for active minds.</p>
                   </div>
                 </div>
               </div>
               <div className="space-y-4 pt-12">
                 <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80&w=800" alt="Classroom" className="rounded-3xl w-full h-48 object-cover" />
+                  <img src="/images/image.JPG" alt="Campus" className="rounded-3xl w-full h-48 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-laex-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                     <h4 className="text-white font-bold">Smart Classrooms</h4>
-                    <p className="text-white/70 text-xs">AI-enabled learning.</p>
+                    <p className="text-white/70 text-xs">Comfortable and focused environment.</p>
                   </div>
                 </div>
                 <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800" alt="Hostel" className="rounded-3xl w-full h-64 object-cover" />
+                  <img src="/herobanner/160A3395.JPG" alt="Hostel" className="rounded-3xl w-full h-64 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-laex-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <h4 className="text-white font-bold">Safe Hostels</h4>
-                    <p className="text-white/70 text-xs">Your second home.</p>
+                    <h4 className="text-white font-bold">Residential Facility</h4>
+                    <p className="text-white/70 text-xs">Safe and secure second home.</p>
                   </div>
                 </div>
               </div>
