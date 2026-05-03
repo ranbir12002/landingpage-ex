@@ -79,7 +79,7 @@ export default function App() {
         <div className="flex justify-between items-center h-18">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-12 md:h-18 w-auto object-contain md:scale-[4.00] origin-left" />
+            <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-12 md:h-18 w-auto object-contain scale-[4.00] md:scale-[4.00] origin-left ml-8" />
           </div>
 
           {/* Desktop Links */}
@@ -1007,19 +1007,19 @@ export default function App() {
               </div>
               <div className="space-y-4 pt-12">
                 <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img src="/images/image.JPG" alt="Campus" className="rounded-3xl w-full h-48 object-cover" />
+                  <img src="/infra/carrom.png" alt="Recreation Zone" className="rounded-3xl w-full h-48 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-laex-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <h4 className="text-white font-bold">Smart Classrooms</h4>
-                    <p className="text-white/70 text-xs">Comfortable and focused environment.</p>
+                    <h4 className="text-white font-bold">Recreation Zone</h4>
+                    <p className="text-white/70 text-xs">Indoor games for cognitive breaks.</p>
                   </div>
                 </div>
                 <div className="relative group rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img src="/herobanner/160A3395.JPG" alt="Hostel" className="rounded-3xl w-full h-64 object-cover" />
+                  <img src="/infra/DSC09110.JPG" alt="Residential Life" className="rounded-3xl w-full h-64 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-laex-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <h4 className="text-white font-bold">Residential Facility</h4>
-                    <p className="text-white/70 text-xs">Safe and secure second home.</p>
+                    <h4 className="text-white font-bold">Residential Life</h4>
+                    <p className="text-white/70 text-xs">A disciplined yet comfortable campus stay.</p>
                   </div>
                 </div>
               </div>
@@ -1342,8 +1342,8 @@ export default function App() {
 
             {/* Brand */}
             <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-6 bg-white/5 p-3 rounded-2xl w-max border border-white/10">
-                <img src="/logo.png" alt="La Excellence Logo" className="h-15 w-auto object-contain" />
+              <div className="flex items-center gap-3 mb-6 bg-white/5 p-3 rounded-2xl w-max border border-white/10 overflow-hidden">
+                <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-15 w-auto object-contain scale-[3.0] origin-left" />
               </div>
               <p className="text-sm text-white/60 leading-relaxed mb-6 font-medium">Hyderabad's premier integrated coaching academy, shaping India's future lawyers and managers since 2009. Trusted by 10,000+ families across Telangana & AP.</p>
               <div className="flex gap-4">
