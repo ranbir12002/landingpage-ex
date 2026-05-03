@@ -1168,14 +1168,16 @@ export default function App() {
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto pb-12 gap-6 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
             {[
-              { q: "I joined the INTER + CLAT program after my 10th boards. Within 8 months, my legal reasoning scores improved dramatically. The faculty here don't just teach — they mentor. I secured admission to NALSAR Hyderabad in my very first attempt.", author: "Ananya Reddy", sub: "NALSAR Hyderabad | CLAT AIR 89", letter: "A" },
-              { q: "As a parent, I was worried my son would struggle balancing boards and IPMAT prep. La Excellence's structured system made it seamless. The personal tracking system kept us informed every step of the way. He cracked IIM Indore's IPM program.", author: "Ravi Kumar (Parent)", sub: "Son: IIM Indore IPM | IPMAT 2024", letter: "R" },
-              { q: "The philosophy here is different. It's not just about marks — it's about becoming someone ready for leadership. The Sadhana approach — daily practice, assessments — built a discipline in me that I carry even now at NLU Delhi.", author: "Priya Sharma", sub: "NLU Delhi | AILET 2023", letter: "P" }
+              { q: "This institute stands out for its knowledgeable and experienced faculty who teach with clarity and purpose. The culture of routine tests significantly strengthens exam readiness, and the supportive staff creates a motivating learning environment. I gained a great deal from the structure and discipline here, and the strong credentials of La Excellence reinforce its credibility. The integrated degree and Direct IAS programme is truly distinctive, and the new Inter and CLAT offerings look equally promising.", author: "Teja Sree", sub: "Verified Review | 4 months ago", letter: "T" },
+              { q: "It is a complete mentoring ecosystem that shapes a student’s career from the foundational level. Their approach, creativity, and innovative programs, especially the Inter + IAS integrated degree, make them one of the best choices for students aiming for Civil Services.", author: "Divya Mattagunja", sub: "Verified Review | 4 months ago", letter: "D" },
+              { q: "Yesterday I went to the college to join my sister, The campus and facilities look well-planned. They explained very well about the college and what they are going to teach to students. Faculty and management appear dedicated to academic excellence.", author: "Gunnam Vani", sub: "Verified Review | 4 months ago", letter: "G" },
+              { q: "The counselling and guidance for both students and parents are exceptional. The sessions motivate students and keep them focused. The college has a very positive atmosphere. Hostel facilities are very good. The staff for CLAT and IPMAT is dedicated. Special thanks to CSR sir.", author: "Venkatesh Thipparthi", sub: "Verified Review | 4 months ago", letter: "V" },
+              { q: "What truly sets this campus apart is the synergy between the teachers and the support team. The faculty members go above and beyond to ensure every student masters the material, while the staff are always approachable and ready to help with a smile. It is rare to find an environment where you feel both academically challenged and genuinely cared for.", author: "Chandra Sekhar", sub: "Verified Review | 4 months ago", letter: "C" }
             ].map((t, i) => (
               <FadeIn delay={i * 0.1} key={i}>
-                <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative h-full flex flex-col">
+                <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative h-full flex flex-col w-[85vw] md:w-[400px] shrink-0 snap-center">
                   <Quote className="absolute top-6 right-6 w-8 h-8 text-slate-100 rotate-180" />
                   <div className="flex gap-1 text-laex-orange mb-6">
                     <Star className="w-4 h-4 fill-current" /> <Star className="w-4 h-4 fill-current" /> <Star className="w-4 h-4 fill-current" /> <Star className="w-4 h-4 fill-current" /> <Star className="w-4 h-4 fill-current" />
