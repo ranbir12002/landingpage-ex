@@ -630,7 +630,7 @@ export default function App() {
                   <div className="w-12 h-12 bg-laex-orange/20 rounded-xl flex items-center justify-center text-laex-orange shrink-0">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
-                  <h3 className="text-2xl font-bold">The La Excellence Difference</h3>
+                  <h3 className="text-2xl font-bold"> The La Excellence Edge</h3>
                 </div>
                 <ul className="space-y-5 relative z-10">
                   {[
@@ -825,7 +825,7 @@ export default function App() {
             </FadeIn>
 
             {/* Other Directors */}
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
                   name: "Anush Reddy",
@@ -838,12 +838,23 @@ export default function App() {
                   role: "Director",
                   desc: "With nearly three decades in education, including over eight years in Integrated IAS training, I have dedicated my life to nurturing young minds and building institutions grounded in excellence and integrity. My vision has always been to create learning spaces that inspire curiosity, discipline, and purpose. I have a deep desire to empower students—to help them believe in themselves, think boldly, and grow with confidence and compassion.",
                   img: "/founders/image3.png"
+                },
+                {
+                  name: "Avinash Bhavri",
+                  role: "CLAT Mentor and Program Director",
+                  desc: "Avinash Bhavri is a CLAT Mentor and Program Director at La Excellence, where he leads academic planning, mentoring, and student success initiatives for CLAT and integrated intermediate programs. Known for his structured approach and student-focused guidance, he helps aspirants build conceptual clarity, exam confidence, and a strong foundation for careers in law and leadership.",
+                  img: "/IMG4.jpeg",
+                  pos: "object-top"
                 }
               ].map((founder, i) => (
                 <FadeIn delay={i * 0.1} key={founder.name}>
                   <div className="group rounded-[2.5rem] overflow-hidden bg-white shadow-sm border border-slate-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
                     <div className="aspect-[16/10] overflow-hidden bg-slate-100">
-                      <img src={founder.img} alt={founder.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+                      <img 
+                        src={founder.img} 
+                        alt={founder.name} 
+                        className={`w-full h-full object-cover ${founder.pos || 'object-center'} grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700`} 
+                      />
                     </div>
                     <div className="p-8 lg:p-10 flex flex-col flex-grow">
                       <h3 className="text-2xl font-bold text-laex-blue mb-1">{founder.name}</h3>
