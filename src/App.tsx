@@ -57,14 +57,18 @@ const Navbar = ({ isScrolled }: { isScrolled: boolean }) => (
           <a href="#apply" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Contact</a>
         </div>
 
-        {/* Action icons */}
-        <div className="flex items-center gap-6">
-          <svg className={`w-[22px] h-[22px] ${isScrolled ? 'text-slate-800' : 'text-white'} cursor-pointer hover:opacity-70 transition-opacity`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-          <svg className={`w-[22px] h-[22px] ${isScrolled ? 'text-slate-800' : 'text-white'} cursor-pointer hover:opacity-70 transition-opacity`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+        {/* Action area / Highlights */}
+        <div className="flex items-center gap-3 md:gap-4">
+          <div className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full border ${isScrolled ? 'border-laex-orange text-laex-orange bg-laex-orange/5' : 'border-white/30 text-white bg-white/10'} text-xs font-bold tracking-wider uppercase`}>
+            <span className="relative flex h-2 w-2">
+              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isScrolled ? 'bg-laex-orange' : 'bg-white'}`}></span>
+              <span className={`relative inline-flex rounded-full h-2 w-2 ${isScrolled ? 'bg-laex-orange' : 'bg-white'}`}></span>
+            </span>
+            Admissions Open (2026-28)
+          </div>
+          <a href="#apply" className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all ${isScrolled ? 'bg-laex-orange text-white hover:bg-orange-600 shadow-md' : 'bg-white text-laex-blue hover:bg-gray-100 hover:scale-105'}`}>
+            Free Diagnostic Test
+          </a>
         </div>
       </div>
     </div>
@@ -122,17 +126,6 @@ export default function App() {
     }, 5000);
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
-  const galleryRef = useRef<HTMLElement>(null);
-  const { scrollYProgress: galleryProgress } = useScroll({
-    target: galleryRef,
-    offset: ["start start", "end end"]
-  });
-  const xTransform = useTransform(galleryProgress, [0, 1], ["0%", "-66.6666%"]);
-
-  // Gallery slide text animations — each slide is 0-0.33, 0.33-0.66, 0.66-1.0
-  const slide2TextOpacity = useTransform(galleryProgress, [0.33, 0.36, 0.61, 0.66], [0, 1, 1, 0]);
-  const slide2TextY = useTransform(galleryProgress, [0.33, 0.36, 0.61, 0.66], [40, 0, 0, -30]);
 
   return (
     <div className="min-h-screen bg-laex-light selection:bg-laex-orange selection:text-white font-sans text-slate-800">
@@ -202,23 +195,23 @@ export default function App() {
             {/* Right Cards */}
             <div className="hidden lg:flex flex-col items-end justify-end h-full space-y-auto pt-12 pb-4">
               {/* Location/Program Card Bottom Right */}
-              <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-[2rem] w-80 shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-all cursor-pointer shrink-0 mt-32">
+              <a href="#location" className="block bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-[2rem] w-80 shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-all cursor-pointer shrink-0 mt-32">
                 <div className="absolute top-8 right-8 w-12 h-12 bg-black/40 rounded-full flex items-center justify-center text-white/80 group-hover:bg-black/60 transition-all pointer-events-none">
-                  <svg className="w-5 h-5 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </div>
-                <div className="mb-6 opacity-80">
-                  <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                  <svg className="w-7 h-7 text-laex-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Madhapur Campus</h3>
+                <h3 className="text-2xl font-bold text-white mb-3">Himayat Nagar Campus</h3>
                 <p className="text-white/80 text-sm leading-relaxed">
-                  We design integrated CLAT & IPMAT programs as a part of our new residential campus in the city.
+                  Located in the heart of the city at Himayat Nagar, our campus provides the perfect atmosphere for deep focus and competitive preparation.
                 </p>
-              </div>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -249,7 +242,7 @@ export default function App() {
                 </div>
                 <h3 className="text-3xl font-serif font-bold text-laex-blue mb-4">INTER + CLAT</h3>
                 <p className="text-slate-600 mb-8 leading-relaxed">
-                  Complete Intermediate while receiving full CLAT coaching — without sacrificing either. The smartest way to enter India's premier National Law Universities.
+                  Complete Intermediate(MEC, CEC, HEC and MPC) while receiving full CLAT coaching — without sacrificing either. The smartest way to enter India's premier National Law Universities.
                 </p>
                 <ul className="space-y-4 mb-10 flex-grow">
                   {[
@@ -284,7 +277,7 @@ export default function App() {
                 </div>
                 <h3 className="text-3xl font-serif font-bold text-laex-blue mb-4">INTER + IPMAT</h3>
                 <p className="text-slate-600 mb-8 leading-relaxed">
-                  Build a management career from the foundation. Simultaneously complete Intermediate while preparing rigorously for IPMAT, JIPMAT, and related exams for IIM entry.
+                  Build a management career from the foundation. Simultaneously complete Intermediate(MEC, CEC, HEC and MPC) while preparing rigorously for IPMAT, JIPMAT, and related exams for IIM entry.
                 </p>
                 <ul className="space-y-4 mb-10 flex-grow">
                   {[
@@ -373,6 +366,7 @@ export default function App() {
                       <option value="">Select Program</option>
                       <option value="clat">INTER + CLAT</option>
                       <option value="ipmat">INTER + IPMAT</option>
+                      <option value="ias">INTER + IAS</option>
                     </select>
                   </div>
                   <div>
@@ -540,67 +534,53 @@ export default function App() {
         <SectionDivider fromColor="from-laex-blue" toColor="to-laex-dark" height="h-32" />
       </section>
 
-      {/* Scroll-linked Gallery */}
-      <section ref={galleryRef} className="h-[300vh] relative bg-laex-dark">
-        <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
-          <motion.div style={{ x: xTransform }} className="flex w-[300vw] h-full">
+      {/* Infrastructure / Environment Gallery */}
+      <section className="bg-laex-dark relative">
+        {/* Slide 1 */}
+        <div className="w-full min-h-[60vh] md:min-h-[80vh] relative flex flex-col justify-center p-8 md:p-16 lg:p-24">
+          <img src="/images/image.JPG" className="absolute inset-0 w-full h-full object-cover opacity-50" alt="Campus Life" />
+          <div className="absolute inset-0 bg-gradient-to-t from-laex-dark via-laex-dark/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-laex-dark/90 via-transparent to-transparent w-full md:w-1/2"></div>
+          <div className="relative z-10 max-w-4xl mt-12 md:mt-24">
+            <FadeIn>
+              <div className="inline-flex px-3 py-1 bg-laex-orange text-white rounded-full text-xs font-bold tracking-widest uppercase mb-6 shadow-md">Campus Life</div>
+              <h2 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6">Where Focus <br />Meets Ambition</h2>
+              <p className="text-xl text-white/80 max-w-2xl">Immersive study environments designed purely for deep work and competitive excellence.</p>
+            </FadeIn>
+          </div>
+        </div>
 
-            {/* Slide 1 */}
-            <div className="w-[100vw] h-full shrink-0 relative flex flex-col justify-end p-8 md:p-16 lg:p-24 pb-40">
-              <img src="/images/image.JPG" className="absolute inset-0 w-full h-full object-cover opacity-50 transition-opacity" alt="Campus Life" />
-              <div className="absolute inset-0 bg-gradient-to-t from-laex-dark via-laex-dark/40 to-transparent"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-laex-dark/90 via-transparent to-transparent w-1/2"></div>
-              <div className="relative z-10 max-w-4xl">
-                <div className="inline-flex px-3 py-1 bg-laex-orange text-white rounded-full text-xs font-bold tracking-widest uppercase mb-6 shadow-md">Campus Life</div>
-                <h2 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6">Where Focus <br />Meets Ambition</h2>
-                <p className="text-xl text-white/80 max-w-2xl">Immersive study environments designed purely for deep work and competitive excellence.</p>
-              </div>
-            </div>
+        {/* Slide 3 - Transitions to Light Theme */}
+        <div className="w-full min-h-[60vh] md:min-h-[80vh] relative flex flex-col justify-center p-8 md:p-16 lg:p-24">
+          <div className="absolute inset-0 bg-white"></div>
+          <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000" className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-multiply grayscale" alt="Library" />
 
-            {/* Slide 2 */}
-            <div className="w-[100vw] h-full shrink-0 relative flex flex-col justify-end p-8 md:p-16 lg:p-24 pb-40 border-l border-white/5">
-              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=2000" className="absolute inset-0 w-full h-full object-cover opacity-40" alt="Mentorship" />
-              <div className="absolute inset-0 bg-gradient-to-t from-laex-dark via-laex-dark/40 to-transparent"></div>
-              <div className="absolute inset-0 bg-gradient-to-l from-laex-dark/90 via-transparent to-transparent w-1/2 ml-auto"></div>
-              <motion.div style={{ opacity: slide2TextOpacity, y: slide2TextY }} className="relative z-10 max-w-4xl ml-auto text-right flex flex-col items-end">
-                <div className="inline-flex px-3 py-1 bg-laex-blue border border-white/20 text-white rounded-full text-xs font-bold tracking-widest uppercase mb-6 shadow-md backdrop-blur-md">1-on-1 Mentorship</div>
-                <h2 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6">Guided by <br />the Best</h2>
-                <p className="text-xl text-white/80 max-w-2xl text-right">Daily interactions with IIM alumni and NLU graduates who have walked the path to success.</p>
-              </motion.div>
-            </div>
+          {/* Fade out the dark from top to bottom over the light background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-laex-dark via-laex-dark/60 to-transparent h-1/2 z-10"></div>
 
-            {/* Slide 3 - Transitions to Light Theme */}
-            <div className="w-[100vw] h-full shrink-0 relative flex flex-col justify-end p-8 md:p-16 lg:p-24 pb-40">
-              <div className="absolute inset-0 bg-white"></div>
-              <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000" className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-multiply grayscale" alt="Library" />
+          {/* Fade to solid white at the bottom to blend with next section */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent z-10 h-full"></div>
 
-              {/* Fade out the dark from the left over the light background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-laex-dark via-laex-dark/80 to-transparent w-[50vw] z-10"></div>
-
-              {/* Fade to solid white at the bottom to blend with next section */}
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent z-10 h-full"></div>
-
-              <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center text-center">
-                <div className="inline-flex px-3 py-1 bg-laex-blue text-white rounded-full text-xs font-bold tracking-widest uppercase mb-6 shadow-md">24/7 Library</div>
-                <h2 className="text-5xl md:text-7xl font-serif font-bold text-laex-blue mb-6">Endless <br />Resources</h2>
-                <p className="text-xl text-slate-600 max-w-2xl font-medium">Unrestricted access to the largest repository of preparation materials and premium mock tests.</p>
-              </div>
-            </div>
-
-          </motion.div>
+          <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center text-center mt-12 md:mt-24">
+            <FadeIn>
+              <div className="inline-flex px-3 py-1 bg-laex-blue text-white rounded-full text-xs font-bold tracking-widest uppercase mb-6 shadow-md">24/7 Library</div>
+              <h2 className="text-5xl md:text-7xl font-serif font-bold text-laex-blue mb-6">Endless <br />Resources</h2>
+              <p className="text-xl text-slate-600 max-w-2xl font-medium">Unrestricted access to the largest repository of preparation materials and premium mock tests.</p>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* Why Most CLAT Coaching Fails Students */}
+      {/* What We Do Different */}
       <section className="bg-slate-50 relative py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-laex-blue mb-6">
-                Why Most CLAT Coaching <span className="text-laex-orange">Fails Students</span>
+                What We Do <span className="text-laex-orange">Different</span>
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Most institutes teach the same content to everyone — regardless of strengths, gaps, or learning pace. Here's what's broken, and how we fix it.
+                Most institutes teach the same content to everyone — regardless of strengths, gaps, or learning pace. Here's how our approach stands apart.
               </p>
             </div>
           </FadeIn>
@@ -608,15 +588,15 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Problem Side */}
             <FadeIn delay={0.1}>
-              <div className="bg-white rounded-3xl p-8 md:p-10 border border-red-100 shadow-sm h-full relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-bl-full -z-10 opacity-50"></div>
+              <div className="bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-sm h-full relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-full -z-10 opacity-50"></div>
                 <div className="flex items-center gap-4 mb-8 pb-6 border-b border-slate-100">
-                  <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500 shrink-0">
+                  <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-slate-400 shrink-0">
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-800">The Typical Coaching Problem</h3>
+                  <h3 className="text-2xl font-bold text-slate-700">The Traditional Approach</h3>
                 </div>
                 <ul className="space-y-5">
                   {[
@@ -722,11 +702,11 @@ export default function App() {
       </section>
 
       {/* 5-Level Journey */}
-      <section className="bg-laex-dark text-white py-24 relative overflow-hidden">
+      <section className="bg-laex-dark text-white pt-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-current text-white"><polygon points="0,100 100,0 100,100" /></svg>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-24">
           <FadeIn>
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
@@ -1208,48 +1188,72 @@ export default function App() {
                 </p>
 
                 <div className="space-y-6">
-                  <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
-                      <MapPin className="w-5 h-5 text-laex-orange" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="flex gap-4 items-start">
+                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                        <MapPin className="w-5 h-5 text-laex-orange" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg mb-1">Himayat Nagar</h4>
+                        <p className="text-white/60 text-sm">Day Scholar Campus<br />Hyderabad, Telangana</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-1">Himayat Nagar Branch</h4>
-                      <p className="text-white/60 text-sm">Himayat Nagar, Hyderabad, Telangana</p>
+
+                    <div className="flex gap-4 items-start">
+                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                        <MapPin className="w-5 h-5 text-laex-orange" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg mb-1">Kompally</h4>
+                        <p className="text-white/60 text-sm">Residential Campus<br />Hyderabad, Telangana</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
-                      <Clock className="w-5 h-5 text-laex-orange" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/10">
+                    <div className="flex gap-4 items-start">
+                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                        <Clock className="w-5 h-5 text-laex-orange" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg mb-1">Visiting Hours</h4>
+                        <p className="text-white/60 text-sm">Mon - Sat: 9:00 AM - 7:00 PM<br />Sun: 10:00 AM - 2:00 PM</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-1">Visiting Hours</h4>
-                      <p className="text-white/60 text-sm">Mon - Sat: 9:00 AM - 7:00 PM<br />Sun: 10:00 AM - 2:00 PM</p>
-                    </div>
-                  </div>
 
-                  <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
-                      <Phone className="w-5 h-5 text-laex-orange" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-1">Call for Admissions</h4>
-                      <div className="flex flex-col gap-1 mt-1">
-                        <a href="tel:+919000296424" className="text-white hover:text-laex-orange transition-colors text-sm font-medium">+91 90002 96424</a>
-                        <a href="tel:+919247903001" className="text-white hover:text-laex-orange transition-colors text-sm font-medium">+91 92479 03001</a>
+                    <div className="flex gap-4 items-start">
+                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                        <Phone className="w-5 h-5 text-laex-orange" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg mb-1">Call for Admissions</h4>
+                        <div className="flex flex-col gap-1 mt-1">
+                          <a href="tel:+919000296424" className="text-white hover:text-laex-orange transition-colors text-sm font-medium">+91 90002 96424</a>
+                          <a href="tel:+919247903001" className="text-white hover:text-laex-orange transition-colors text-sm font-medium">+91 92479 03001</a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <a
-                  href="https://maps.app.goo.gl/ibpxHKCzGC82tJrWA?g_st=ac"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-flex items-center gap-2 bg-laex-orange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-lg transition-all shadow-lg shadow-laex-orange/20 group w-max text-sm"
-                >
-                  Get Directions <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+                <div className="flex flex-col sm:flex-row gap-4 mt-10">
+                  <a
+                    href="https://maps.app.goo.gl/ibpxHKCzGC82tJrWA?g_st=ac"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-laex-orange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-lg transition-all shadow-lg shadow-laex-orange/20 group text-sm"
+                  >
+                    Himayat Nagar Map <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <a
+                    href="https://maps.app.goo.gl/D27qjih4QxR2aios8?g_st=ac"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-6 py-3 rounded-lg transition-all group text-sm"
+                  >
+                    Kompally Map <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
               </FadeIn>
             </div>
           </div>
