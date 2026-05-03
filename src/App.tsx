@@ -1344,8 +1344,8 @@ export default function App() {
 
             {/* Brand */}
             <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-6 bg-white/5 p-3 rounded-2xl w-max border border-white/10 overflow-hidden">
-                <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-15 w-auto object-contain scale-[3.0] origin-left" />
+              <div className="flex items-center gap-3 mb-8 bg-white/5 px-12 py-8 rounded-2xl w-max border border-white/10">
+                <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-40 w-auto object-contain" />
               </div>
               <p className="text-sm text-white/60 leading-relaxed mb-6 font-medium">Hyderabad's premier integrated coaching academy, shaping India's future lawyers and managers since 2009. Trusted by 10,000+ families across Telangana & AP.</p>
               <div className="flex gap-4">
