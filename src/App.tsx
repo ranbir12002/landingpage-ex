@@ -508,7 +508,7 @@ export default function App() {
                 </div>
                 <div className="space-y-4">
                   <div className="animate-float-delay-2 aspect-[4/5] rounded-2xl overflow-hidden relative border border-white/10">
-                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Law" />
+                    <img src="/nalsar.png" className="w-full h-full object-cover" alt="NALSAR Hyderabad" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
                       <h4 className="text-white font-bold mb-1">NALSAR Hyderabad</h4>
@@ -530,7 +530,7 @@ export default function App() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="animate-float-delay-2 aspect-[4/5] rounded-2xl overflow-hidden relative border border-white/10">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Management" />
+                    <img src="/iim indore .png" className="w-full h-full object-cover" alt="IIM Indore" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
                       <h4 className="text-white font-bold mb-1">IIM Indore</h4>
