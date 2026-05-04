@@ -58,6 +58,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 export default function App() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -79,7 +80,7 @@ export default function App() {
         <div className="flex justify-between items-center h-18">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-12 md:h-18 w-auto object-contain scale-[4.00] md:scale-[4.00] origin-left ml-8" />
+            <img src="/logo1-removebg-preview.png" alt="La Excellence Logo" className="h-12 md:h-18 w-auto object-contain scale-[5.00] md:scale-[4.00] origin-left ml-12" />
           </div>
 
           {/* Desktop Links */}
@@ -171,7 +172,7 @@ export default function App() {
     "/herobanner/160A3395.JPG",
     "/herobanner/IMG-20250922-WA0063.jpg",
     "/herobanner/IMG_20250831_131431.jpg",
-    "/herobanner/WhatsApp Image 2025-12-02 at 18.28.04 (1).jpeg"
+    "/herobanner/image.png"
   ];
 
   useEffect(() => {
@@ -393,57 +394,90 @@ export default function App() {
             </div>
 
             {/* Right Form */}
-            <div className="lg:w-7/12 p-12 lg:p-16 bg-white">
-              <h3 className="text-2xl font-bold text-laex-blue mb-8">Book Your Free Counseling</h3>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Student's Full Name</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="Enter full name" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Parent's / Guardian Phone</label>
-                    <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="+91 XXXXX XXXXX" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
-                    <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="your@email.com" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Current Class</label>
-                    <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
-                      <option value="">Select Class</option>
-                      <option value="10">Class 10th (Moving to 11th)</option>
-                      <option value="11">Class 11th</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Program of Interest</label>
-                    <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
-                      <option value="">Select Program</option>
-                      <option value="clat">INTER + CLAT</option>
-                      <option value="ipmat">INTER + IPMAT</option>
-                      <option value="ias">INTER + IAS</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Campus</label>
-                    <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
-                      <option value="">Select Campus</option>
-                      <option value="kompally">Kompally (Residential)</option>
-                      <option value="himayatnagar">Himayat Nagar (Day Scholar)</option>
-                    </select>
-                  </div>
-                </div>
-                <button type="submit" className="w-full bg-laex-orange hover:bg-orange-600 text-white font-bold py-4 rounded-xl text-lg transition-all shadow-lg shadow-laex-orange/20 hover:scale-[1.02] active:scale-[0.98] mt-4 flex justify-center items-center gap-2">
-                  <GraduationCap className="w-5 h-5" /> Get Free Counseling Now
-                </button>
-                <p className="text-center text-xs text-slate-500 font-medium flex items-center justify-center gap-2"><Shield className="w-3 h-3" /> Your information is 100% safe. We respect your privacy.</p>
-              </form>
+            <div className="lg:w-7/12 p-12 lg:p-16 bg-white flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                {!isSubmitted ? (
+                  <motion.div
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <h3 className="text-2xl font-bold text-laex-blue mb-8">Book Your Free Counseling</h3>
+                    <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setIsSubmitted(true); }}>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Student's Full Name</label>
+                          <input required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="Enter full name" />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Parent's / Guardian Phone</label>
+                          <input required type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="+91 XXXXX XXXXX" />
+                        </div>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
+                          <input required type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="your@email.com" />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Current Class</label>
+                          <select required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
+                            <option value="">Select Class</option>
+                            <option value="10">Class 10th (Moving to 11th)</option>
+                            <option value="11">Class 11th</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Program of Interest</label>
+                          <select required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
+                            <option value="">Select Program</option>
+                            <option value="clat">INTER + CLAT</option>
+                            <option value="ipmat">INTER + IPMAT</option>
+                            <option value="ias">INTER + IAS</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Campus</label>
+                          <select required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
+                            <option value="">Select Campus</option>
+                            <option value="kompally">Kompally (Residential)</option>
+                            <option value="himayatnagar">Himayat Nagar (Day Scholar)</option>
+                          </select>
+                        </div>
+                      </div>
+                      <button type="submit" className="w-full bg-laex-orange hover:bg-orange-600 text-white font-bold py-4 rounded-xl text-lg transition-all shadow-lg shadow-laex-orange/20 hover:scale-[1.02] active:scale-[0.98] mt-4 flex justify-center items-center gap-2">
+                        <GraduationCap className="w-5 h-5" /> Get Free Counseling Now
+                      </button>
+                      <p className="text-center text-xs text-slate-500 font-medium flex items-center justify-center gap-2"><Shield className="w-3 h-3" /> Your information is 100% safe. We respect your privacy.</p>
+                    </form>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-12"
+                  >
+                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-3xl font-bold text-laex-blue mb-4">Request Received!</h3>
+                    <p className="text-slate-600 mb-8 text-lg">
+                      Thank you for choosing La Excellence. <br />
+                      Our academic counselors will call you within <span className="text-laex-orange font-bold">2 hours</span>.
+                    </p>
+                    <button
+                      onClick={() => setIsSubmitted(false)}
+                      className="text-laex-orange font-bold border-b-2 border-laex-orange pb-1 hover:text-orange-600 transition-colors"
+                    >
+                      Submit Another Inquiry
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
           </div>
@@ -1426,6 +1460,49 @@ export default function App() {
           </div>
         </div>
       </footer>
+      
+      {/* Floating Contacts (Left Side) */}
+      <div className="fixed left-4 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-4">
+        <motion.a
+          href="https://api.whatsapp.com/send?phone=919247903001&text=Hi%20La%20Excellence,%20I'm%20interested%20in%20the%20CLAT/IPMAT%20program."
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group relative"
+        >
+          <MessageSquare className="w-7 h-7" />
+          <span className="absolute left-full ml-4 px-3 py-1.5 bg-white text-[#25D366] text-xs font-bold rounded-lg shadow-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-all">WhatsApp Us</span>
+        </motion.a>
+        
+        <motion.a
+          href="tel:+919000296424"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="w-14 h-14 bg-laex-blue text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group relative"
+        >
+          <Phone className="w-7 h-7" />
+          <span className="absolute left-full ml-4 px-3 py-1.5 bg-white text-laex-blue text-xs font-bold rounded-lg shadow-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-all">Call Admissions</span>
+        </motion.a>
+      </div>
+
+      {/* Floating Admissions Button (Right Side) */}
+      <motion.a
+        href="#apply"
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex items-center"
+      >
+        <div className="bg-laex-orange text-white font-bold py-8 px-4 rounded-l-3xl shadow-[-4px_0_30px_rgba(249,115,22,0.4)] transition-all flex flex-col items-center gap-4 cursor-pointer active:scale-95 group">
+          <span className="[writing-mode:vertical-lr] rotate-180 uppercase tracking-[0.25em] text-sm md:text-base">
+            Admission 2026-28
+          </span>
+          <ArrowRight className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+        </div>
+      </motion.a>
 
     </div>
   );
