@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# La Excellence CLAT & IPMAT Landing Page
 
-# Run and deploy your AI Studio app
+A premium, high-converting landing page for La Excellence IAS Academy's integrated Intermediate + CLAT/IPMAT programs.
 
-This contains everything you need to run your app locally.
+## Features
+- **Modern UI/UX**: Built with React, Tailwind CSS, and Framer Motion for smooth animations and a premium feel.
+- **Mobile Optimized**: Fully responsive design with a custom mobile menu and scaled branding.
+- **Authentic Imagery**: Integrated campus photos and real student testimonials.
+- **Lead Generation**: Custom inquiry form with validation and success feedback.
+- **Interactive Elements**: Floating contact panel (WhatsApp/Call) and horizontal testimonial slider.
 
-View your app in AI Studio: https://ai.studio/apps/9da29f2c-fcda-490f-ac2d-17a7a53ece99
+## Tech Stack
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
 
-## Run Locally
+## Getting Started
 
-**Prerequisites:**  Node.js
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
+2. **Run Locally**:
+   ```bash
+   npm run dev
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+3. **Build for Production**:
+   ```bash
+   npm run build
+   ```
+
+## License
+All rights reserved © La Excellence IAS Academy.
