@@ -480,6 +480,202 @@ export default function App() {
         </div>
       </section>
 
+      <SectionDivider fromColor="from-laex-blue" toColor="to-laex-dark" height="h-32" />
+
+      {/* 5-Level Journey */}
+      <section className="bg-laex-dark text-white pt-24 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-current text-white"><polygon points="0,100 100,0 100,100" /></svg>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-24">
+          <FadeIn>
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+                From Curious Learner <br />
+                <span className="text-laex-orange">to CLAT Topper.</span>
+              </h2>
+              <p className="text-white/80 text-lg leading-relaxed">
+                Every student follows our structured 5-level journey — designed so growth is measurable, not accidental.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid lg:grid-cols-12 gap-12">
+            {/* Left side - Core belief & stats */}
+            <div className="lg:col-span-4 space-y-8">
+              <FadeIn delay={0.1}>
+                <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+                  <div className="text-laex-orange font-bold text-sm tracking-widest uppercase mb-4">Our Core Belief</div>
+                  <p className="text-xl font-serif italic leading-relaxed text-white/90">
+                    "Every student has a unique learning fingerprint. Our job is to find it — and optimize it."
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors cursor-default">
+                    <div className="text-4xl font-bold text-laex-orange mb-2">5</div>
+                    <div className="text-xs uppercase tracking-widest font-bold text-white/60">Journey Levels</div>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors cursor-default">
+                    <div className="text-4xl font-bold text-laex-orange mb-2">100%</div>
+                    <div className="text-xs uppercase tracking-widest font-bold text-white/60">Data-Tracked</div>
+                  </div>
+                  <div className="col-span-2 bg-laex-orange rounded-2xl p-6 text-center shadow-lg shadow-laex-orange/20 hover:bg-orange-600 transition-colors cursor-default">
+                    <div className="text-3xl font-bold text-white mb-1">1:1</div>
+                    <div className="text-sm uppercase tracking-widest font-bold text-white/90">Mentor Sessions</div>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Right side - The Journey timeline */}
+            <div className="lg:col-span-8 relative">
+              <div className="absolute left-6 top-8 bottom-8 w-0.5 bg-white/10 hidden md:block"></div>
+              <div className="space-y-8 md:space-y-12">
+                {[
+                  { level: "01", name: "Ignition", desc: "Diagnostics, skill mapping, baseline assessment. Understand where you are before building where you're going.", tag: "Diagnostic", tag2: "Know your gaps" },
+                  { level: "02", name: "Foundation", desc: "Core concepts across all 5 subjects. Eclectic English, Logical Launchpad, Curious Current Affairs modules.", tag: "Core Skills" },
+                  { level: "03", name: "Exam Level", desc: "Full syllabus coverage. Weekly mocks begin. Sectional tests. Detailed analytics reviewed with mentor.", tag: "Accuracy" },
+                  { level: "04", name: "Accuracy", desc: "Error analysis & precision drills. Cut down silly mistakes. Maximize accuracy before building speed.", tag: "Speed", tag2: "Build precision" },
+                  { level: "05", name: "Topper", desc: "Full-length mocks under exam conditions. Time optimization. Rank simulation. NLU interview readiness.", tag: "Rank", tag2: "NLU Selection" }
+                ].map((step, i) => (
+                  <FadeIn delay={i * 0.1 + 0.2} key={i}>
+                    <div className="relative md:pl-16 group">
+                      <div className="absolute left-0 top-1 w-12 h-12 rounded-full bg-laex-dark border-4 border-white/10 hidden md:flex items-center justify-center font-bold text-laex-orange group-hover:border-laex-orange transition-colors z-10">
+                        {step.level}
+                      </div>
+                      <div className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl group-hover:bg-white/10 transition-colors">
+                        <div className="flex flex-wrap items-center gap-4 mb-4">
+                          <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+                            <span className="md:hidden text-laex-orange">{step.level}.</span>
+                            {step.name}
+                          </h3>
+                          <div className="flex flex-wrap gap-2">
+                            {step.tag && <span className="px-3 py-1 bg-laex-orange/20 text-laex-orange rounded-full text-xs font-bold uppercase tracking-wider">{step.tag}</span>}
+                            {step.tag2 && <span className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider">{step.tag2}</span>}
+                          </div>
+                        </div>
+                        <p className="text-white/70 leading-relaxed font-medium">{step.desc}</p>
+                      </div>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Daily Routine / What Happens Every Day */}
+      <section className="bg-laex-dark text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-current text-white"><polygon points="0,100 100,0 100,100" /></svg>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24">
+          <FadeIn>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
+                What Happens Every Day <br />
+                <span className="text-laex-orange">Inside La Excellence</span>
+              </h2>
+              <p className="text-white/70 text-lg">
+                A structured, dynamic, and empathetic learning environment — where no day is wasted.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid lg:grid-cols-12 gap-12">
+
+            {/* Left Column: Schedule & Modules */}
+            <div className="lg:col-span-8 space-y-12">
+
+              {/* Schedule */}
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white font-bold text-xs tracking-widest uppercase mb-8">
+                  <Clock className="w-4 h-4 text-laex-orange" /> SAMPLE DAILY SCHEDULE
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    { time: "7:00 – 8:30 AM", title: "LaEx Spark", desc: "Editorial + newspaper analysis, GK quiz" },
+                    { time: "9:00 – 12:00 PM", title: "Core Class Sessions", desc: "Subject-wise concept & practice" },
+                    { time: "2:00 – 4:00 PM", title: "Sectional Tests & Review", desc: "Analytics + mentor feedback loop" },
+                    { time: "5:00 – 6:30 PM", title: "Doubt + Mentor Session", desc: "1-on-1 or group mentorship blocks" }
+                  ].map((item, i) => (
+                    <FadeIn delay={i * 0.1} key={i}>
+                      <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                        <div className="md:w-48 shrink-0 text-laex-orange font-bold font-serif text-lg">{item.time}</div>
+                        <div>
+                          <h4 className="text-xl font-bold mb-1">{item.title}</h4>
+                          <p className="text-white/70 text-sm">{item.desc}</p>
+                        </div>
+                      </div>
+                    </FadeIn>
+                  ))}
+                </div>
+              </div>
+
+              {/* Foundation Modules */}
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white font-bold text-xs tracking-widest uppercase mb-8">
+                  <Star className="w-4 h-4 text-laex-orange" /> FOUNDATION PHASE SIGNATURE MODULES
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <FadeIn delay={0.1}>
+                    <div className="p-8 rounded-3xl bg-laex-orange text-white shadow-lg shadow-laex-orange/20 h-full">
+                      <h4 className="text-2xl font-bold mb-3">Eclectic English</h4>
+                      <p className="text-white/90 text-sm leading-relaxed font-medium">Advanced comprehension & vocabulary framework</p>
+                    </div>
+                  </FadeIn>
+                  <FadeIn delay={0.2}>
+                    <div className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors h-full">
+                      <h4 className="text-2xl font-bold mb-3 text-laex-orange">Logical Launchpad</h4>
+                      <p className="text-white/70 text-sm leading-relaxed font-medium">Reasoning patterns, critical thinking from ground up</p>
+                    </div>
+                  </FadeIn>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Subjects */}
+            <div className="lg:col-span-4">
+              <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 lg:sticky lg:top-24">
+                <div className="text-laex-orange font-bold text-xs tracking-widest uppercase mb-8 border-b border-white/10 pb-4">
+                  Subjects Covered
+                </div>
+
+                <div className="space-y-6">
+                  {[
+                    { icon: "📖", title: "English & Reading Comprehension" },
+                    { icon: "🧠", title: "Logical Reasoning" },
+                    { icon: "⚖", title: "Legal Reasoning & Principles" },
+                    { icon: "📐", title: "Quantitative Techniques" },
+                    { icon: "🌍", title: "Current Affairs & GK" }
+                  ].map((sub, i) => (
+                    <FadeIn delay={i * 0.1} key={i}>
+                      <div className="flex items-center gap-5 group p-2 hover:bg-white/5 rounded-xl transition-colors">
+                        <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shrink-0">
+                          {sub.icon}
+                        </div>
+                        <h4 className="font-bold text-white/90 group-hover:text-white transition-colors">{sub.title}</h4>
+                      </div>
+                    </FadeIn>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <SectionDivider fromColor="from-laex-dark" toColor="to-laex-blue" height="h-32" />
+      </section>
+
+
+
       {/* Program Deep Dives */}
       <section className="bg-laex-blue text-white overflow-hidden relative">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 mix-blend-overlay" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1577415124269-fc1140a89a87?auto=format&fit=crop&q=80&w=2000')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
@@ -788,94 +984,7 @@ export default function App() {
           </div>
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none z-10"></div>
         </div>
-        <SectionDivider fromColor="from-white" toColor="to-laex-dark" height="h-32" />
-      </section>
-
-      {/* 5-Level Journey */}
-      <section className="bg-laex-dark text-white pt-24 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-current text-white"><polygon points="0,100 100,0 100,100" /></svg>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-24">
-          <FadeIn>
-            <div className="text-center max-w-3xl mx-auto mb-20">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-                From Curious Learner <br />
-                <span className="text-laex-orange">to CLAT Topper.</span>
-              </h2>
-              <p className="text-white/80 text-lg leading-relaxed">
-                Every student follows our structured 5-level journey — designed so growth is measurable, not accidental.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid lg:grid-cols-12 gap-12">
-            {/* Left side - Core belief & stats */}
-            <div className="lg:col-span-4 space-y-8">
-              <FadeIn delay={0.1}>
-                <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
-                  <div className="text-laex-orange font-bold text-sm tracking-widest uppercase mb-4">Our Core Belief</div>
-                  <p className="text-xl font-serif italic leading-relaxed text-white/90">
-                    "Every student has a unique learning fingerprint. Our job is to find it — and optimize it."
-                  </p>
-                </div>
-              </FadeIn>
-
-              <FadeIn delay={0.2}>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors cursor-default">
-                    <div className="text-4xl font-bold text-laex-orange mb-2">5</div>
-                    <div className="text-xs uppercase tracking-widest font-bold text-white/60">Journey Levels</div>
-                  </div>
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors cursor-default">
-                    <div className="text-4xl font-bold text-laex-orange mb-2">100%</div>
-                    <div className="text-xs uppercase tracking-widest font-bold text-white/60">Data-Tracked</div>
-                  </div>
-                  <div className="col-span-2 bg-laex-orange rounded-2xl p-6 text-center shadow-lg shadow-laex-orange/20 hover:bg-orange-600 transition-colors cursor-default">
-                    <div className="text-3xl font-bold text-white mb-1">1:1</div>
-                    <div className="text-sm uppercase tracking-widest font-bold text-white/90">Mentor Sessions</div>
-                  </div>
-                </div>
-              </FadeIn>
-            </div>
-
-            {/* Right side - The Journey timeline */}
-            <div className="lg:col-span-8 relative">
-              <div className="absolute left-6 top-8 bottom-8 w-0.5 bg-white/10 hidden md:block"></div>
-              <div className="space-y-8 md:space-y-12">
-                {[
-                  { level: "01", name: "Ignition", desc: "Diagnostics, skill mapping, baseline assessment. Understand where you are before building where you're going.", tag: "Diagnostic", tag2: "Know your gaps" },
-                  { level: "02", name: "Foundation", desc: "Core concepts across all 5 subjects. Eclectic English, Logical Launchpad, Curious Current Affairs modules.", tag: "Core Skills" },
-                  { level: "03", name: "Exam Level", desc: "Full syllabus coverage. Weekly mocks begin. Sectional tests. Detailed analytics reviewed with mentor.", tag: "Accuracy" },
-                  { level: "04", name: "Accuracy", desc: "Error analysis & precision drills. Cut down silly mistakes. Maximize accuracy before building speed.", tag: "Speed", tag2: "Build precision" },
-                  { level: "05", name: "Topper", desc: "Full-length mocks under exam conditions. Time optimization. Rank simulation. NLU interview readiness.", tag: "Rank", tag2: "NLU Selection" }
-                ].map((step, i) => (
-                  <FadeIn delay={i * 0.1 + 0.2} key={i}>
-                    <div className="relative md:pl-16 group">
-                      <div className="absolute left-0 top-1 w-12 h-12 rounded-full bg-laex-dark border-4 border-white/10 hidden md:flex items-center justify-center font-bold text-laex-orange group-hover:border-laex-orange transition-colors z-10">
-                        {step.level}
-                      </div>
-                      <div className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl group-hover:bg-white/10 transition-colors">
-                        <div className="flex flex-wrap items-center gap-4 mb-4">
-                          <h3 className="text-2xl font-bold text-white flex items-center gap-3">
-                            <span className="md:hidden text-laex-orange">{step.level}.</span>
-                            {step.name}
-                          </h3>
-                          <div className="flex flex-wrap gap-2">
-                            {step.tag && <span className="px-3 py-1 bg-laex-orange/20 text-laex-orange rounded-full text-xs font-bold uppercase tracking-wider">{step.tag}</span>}
-                            {step.tag2 && <span className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider">{step.tag2}</span>}
-                          </div>
-                        </div>
-                        <p className="text-white/70 leading-relaxed font-medium">{step.desc}</p>
-                      </div>
-                    </div>
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        <SectionDivider fromColor="from-laex-dark" toColor="to-laex-light" height="h-32" />
+        <SectionDivider fromColor="from-white" toColor="to-laex-light" height="h-32" />
       </section>
 
       {/* Founders Section */}
@@ -1078,113 +1187,7 @@ export default function App() {
           </div>
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-10"></div>
         </div>
-        <SectionDivider fromColor="from-slate-50" toColor="to-laex-dark" height="h-32" />
-      </section>
-
-      {/* Daily Routine / What Happens Every Day */}
-      <section className="bg-laex-dark text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-current text-white"><polygon points="0,100 100,0 100,100" /></svg>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24">
-          <FadeIn>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
-                What Happens Every Day <br />
-                <span className="text-laex-orange">Inside La Excellence</span>
-              </h2>
-              <p className="text-white/70 text-lg">
-                A structured, dynamic, and empathetic learning environment — where no day is wasted.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid lg:grid-cols-12 gap-12">
-
-            {/* Left Column: Schedule & Modules */}
-            <div className="lg:col-span-8 space-y-12">
-
-              {/* Schedule */}
-              <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white font-bold text-xs tracking-widest uppercase mb-8">
-                  <Clock className="w-4 h-4 text-laex-orange" /> SAMPLE DAILY SCHEDULE
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    { time: "7:00 – 8:30 AM", title: "LaEx Spark", desc: "Editorial + newspaper analysis, GK quiz" },
-                    { time: "9:00 – 12:00 PM", title: "Core Class Sessions", desc: "Subject-wise concept & practice" },
-                    { time: "2:00 – 4:00 PM", title: "Sectional Tests & Review", desc: "Analytics + mentor feedback loop" },
-                    { time: "5:00 – 6:30 PM", title: "Doubt + Mentor Session", desc: "1-on-1 or group mentorship blocks" }
-                  ].map((item, i) => (
-                    <FadeIn delay={i * 0.1} key={i}>
-                      <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                        <div className="md:w-48 shrink-0 text-laex-orange font-bold font-serif text-lg">{item.time}</div>
-                        <div>
-                          <h4 className="text-xl font-bold mb-1">{item.title}</h4>
-                          <p className="text-white/70 text-sm">{item.desc}</p>
-                        </div>
-                      </div>
-                    </FadeIn>
-                  ))}
-                </div>
-              </div>
-
-              {/* Foundation Modules */}
-              <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white font-bold text-xs tracking-widest uppercase mb-8">
-                  <Star className="w-4 h-4 text-laex-orange" /> FOUNDATION PHASE SIGNATURE MODULES
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <FadeIn delay={0.1}>
-                    <div className="p-8 rounded-3xl bg-laex-orange text-white shadow-lg shadow-laex-orange/20 h-full">
-                      <h4 className="text-2xl font-bold mb-3">Eclectic English</h4>
-                      <p className="text-white/90 text-sm leading-relaxed font-medium">Advanced comprehension & vocabulary framework</p>
-                    </div>
-                  </FadeIn>
-                  <FadeIn delay={0.2}>
-                    <div className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors h-full">
-                      <h4 className="text-2xl font-bold mb-3 text-laex-orange">Logical Launchpad</h4>
-                      <p className="text-white/70 text-sm leading-relaxed font-medium">Reasoning patterns, critical thinking from ground up</p>
-                    </div>
-                  </FadeIn>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Right Column: Subjects */}
-            <div className="lg:col-span-4">
-              <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 lg:sticky lg:top-24">
-                <div className="text-laex-orange font-bold text-xs tracking-widest uppercase mb-8 border-b border-white/10 pb-4">
-                  Subjects Covered
-                </div>
-
-                <div className="space-y-6">
-                  {[
-                    { icon: "📖", title: "English & Reading Comprehension" },
-                    { icon: "🧠", title: "Logical Reasoning" },
-                    { icon: "⚖", title: "Legal Reasoning & Principles" },
-                    { icon: "📐", title: "Quantitative Techniques" },
-                    { icon: "🌍", title: "Current Affairs & GK" }
-                  ].map((sub, i) => (
-                    <FadeIn delay={i * 0.1} key={i}>
-                      <div className="flex items-center gap-5 group p-2 hover:bg-white/5 rounded-xl transition-colors">
-                        <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shrink-0">
-                          {sub.icon}
-                        </div>
-                        <h4 className="font-bold text-white/90 group-hover:text-white transition-colors">{sub.title}</h4>
-                      </div>
-                    </FadeIn>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <SectionDivider fromColor="from-laex-dark" toColor="to-laex-light" height="h-32" />
+        <SectionDivider fromColor="from-slate-50" toColor="to-laex-light" height="h-32" />
       </section>
 
       {/* Testimonials */}
@@ -1456,30 +1459,30 @@ export default function App() {
         </div>
       </footer>
       
-      {/* Floating Contacts (Left Side) */}
-      <div className="fixed left-4 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-4">
+      {/* Floating Contacts (Responsive Position) */}
+      <div className="fixed bottom-6 right-6 lg:left-4 lg:top-1/2 lg:-translate-y-1/2 lg:bottom-auto lg:right-auto z-[100] flex flex-col gap-4">
         <motion.a
           href="https://api.whatsapp.com/send?phone=919247903001&text=Hi%20La%20Excellence,%20I'm%20interested%20in%20the%20CLAT/IPMAT%20program."
           target="_blank"
           rel="noopener noreferrer"
-          initial={{ x: -100, opacity: 0 }}
+          initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
           className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group relative"
         >
           <MessageSquare className="w-7 h-7" />
-          <span className="absolute left-full ml-4 px-3 py-1.5 bg-white text-[#25D366] text-xs font-bold rounded-lg shadow-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-all">WhatsApp Us</span>
+          <span className="absolute right-full mr-4 lg:left-full lg:ml-4 px-3 py-1.5 bg-white text-[#25D366] text-xs font-bold rounded-lg shadow-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-all">WhatsApp Us</span>
         </motion.a>
         
         <motion.a
           href="tel:+919000296424"
-          initial={{ x: -100, opacity: 0 }}
+          initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
           className="w-14 h-14 bg-laex-blue text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group relative"
         >
           <Phone className="w-7 h-7" />
-          <span className="absolute left-full ml-4 px-3 py-1.5 bg-white text-laex-blue text-xs font-bold rounded-lg shadow-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-all">Call Admissions</span>
+          <span className="absolute right-full mr-4 lg:left-full lg:ml-4 px-3 py-1.5 bg-white text-laex-blue text-xs font-bold rounded-lg shadow-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-all">Call Admissions</span>
         </motion.a>
       </div>
 
