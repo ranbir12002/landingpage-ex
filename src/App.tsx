@@ -66,9 +66,9 @@ export default function App() {
 
   const Navbar = ({ isScrolled }: { isScrolled: boolean }) => (
     <motion.nav
-      className={`w-full transition-all duration-500 border-b fixed top-0 z-[70] ${isScrolled
-        ? 'bg-white/95 border-slate-200/50 shadow-sm py-2 backdrop-blur-xl'
-        : 'bg-transparent border-white/5 py-3 backdrop-blur-sm'
+      className={`w-full transition-all duration-500 fixed top-0 z-[70] ${isScrolled
+        ? 'bg-white/95 border-b border-slate-200/50 shadow-md py-2 backdrop-blur-xl'
+        : 'bg-gradient-to-b from-white/95 via-white/80 to-transparent py-5 backdrop-blur-[2px]'
         }`}
     >
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12">
@@ -79,31 +79,31 @@ export default function App() {
           </div>
 
           {/* Desktop Links */}
-          <div className={`hidden lg:flex flex-1 justify-center gap-12 font-sans tracking-[0.15em] text-xs uppercase font-bold transition-colors duration-500 ${isScrolled ? 'text-slate-600' : 'text-white/80'}`}>
-            <a href="#why-us" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>About</a>
-            <a href="#programs" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Programs</a>
-            <a href="#results" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Results</a>
-            <a href="#apply" className={`hover:${isScrolled ? 'text-laex-orange' : 'text-white'} transition-colors`}>Contact</a>
+          <div className={`hidden lg:flex flex-1 justify-center gap-12 font-sans tracking-[0.15em] text-xs uppercase font-bold transition-colors duration-500 ${isScrolled ? 'text-slate-600' : 'text-laex-blue/90'}`}>
+            <a href="#why-us" className={`hover:text-laex-orange transition-colors`}>About</a>
+            <a href="#programs" className={`hover:text-laex-orange transition-colors`}>Programs</a>
+            <a href="#results" className={`hover:text-laex-orange transition-colors`}>Results</a>
+            <a href="#apply" className={`hover:text-laex-orange transition-colors`}>Contact</a>
           </div>
 
           {/* Action area / Highlights */}
           <div className="flex items-center gap-3 md:gap-4">
-            <div className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border ${isScrolled ? 'border-laex-orange text-laex-orange bg-laex-orange/5' : 'border-white/30 text-white bg-white/10'} text-[10px] md:text-xs font-bold tracking-wider uppercase`}>
+            <div className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border ${isScrolled ? 'border-laex-orange text-laex-orange bg-laex-orange/5' : 'border-laex-blue/20 text-laex-blue bg-white/40'} text-[10px] md:text-xs font-bold tracking-wider uppercase`}>
               <span className="relative flex h-2 w-2">
-                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isScrolled ? 'bg-laex-orange' : 'bg-white'}`}></span>
-                <span className={`relative inline-flex rounded-full h-2 w-2 ${isScrolled ? 'bg-laex-orange' : 'bg-white'}`}></span>
+                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isScrolled ? 'bg-laex-orange' : 'bg-laex-blue'}`}></span>
+                <span className={`relative inline-flex rounded-full h-2 w-2 ${isScrolled ? 'bg-laex-orange' : 'bg-laex-blue'}`}></span>
               </span>
               <span className="hidden xs:inline">Admissions Open (2026-28)</span>
               <span className="xs:hidden">Admissions Open</span>
             </div>
-            <a href="#apply" className={`hidden xs:block px-4 py-2 rounded-full text-[10px] md:text-xs font-bold tracking-wider uppercase transition-all ${isScrolled ? 'bg-laex-orange text-white hover:bg-orange-600 shadow-md' : 'bg-white text-laex-blue hover:bg-gray-100 hover:scale-105'}`}>
+            <a href="#apply" className={`hidden xs:block px-4 py-2 rounded-full text-[10px] md:text-xs font-bold tracking-wider uppercase transition-all ${isScrolled ? 'bg-laex-orange text-white hover:bg-orange-600 shadow-md' : 'bg-laex-blue text-white hover:bg-laex-blue/90 hover:scale-105 shadow-sm'}`}>
               Free Test
             </a>
             
             {/* Mobile Menu Toggle */}
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden p-2 rounded-xl transition-colors ${isScrolled ? 'text-laex-blue hover:bg-slate-100' : 'text-white hover:bg-white/10'}`}
+              className={`lg:hidden p-2 rounded-xl transition-colors ${isScrolled ? 'text-laex-blue hover:bg-slate-100' : 'text-laex-blue hover:bg-white/40'}`}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
