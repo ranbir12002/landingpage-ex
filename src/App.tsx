@@ -232,15 +232,25 @@ export default function App() {
                 </a>
               </div>
 
-              {/* Mobile Campus Card (Visible only on small screens) */}
-              <div className="lg:hidden mb-10">
+              {/* Mobile Campus Cards */}
+              <div className="lg:hidden mb-10 space-y-3">
                 <a href="#location" className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl">
                   <div className="w-10 h-10 bg-laex-orange/20 rounded-xl flex items-center justify-center text-laex-orange shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-sm">Himayat Nagar Campus</h3>
-                    <p className="text-white/60 text-xs">Heart of the city • Day Scholar</p>
+                    <p className="text-white/60 text-[10px] uppercase tracking-wider font-bold">City Center • Day Scholar</p>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 ml-auto" />
+                </a>
+                <a href="#location" className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl">
+                  <div className="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-sm">Kompally Campus</h3>
+                    <p className="text-white/60 text-[10px] uppercase tracking-wider font-bold">Greenery • Residential</p>
                   </div>
                   <ChevronRight className="w-5 h-5 text-white/40 ml-auto" />
                 </a>
@@ -256,18 +266,37 @@ export default function App() {
               </div>
             </div>
 
-            {/* Desktop Right Card */}
-            <div className="hidden lg:flex flex-col items-end justify-end pb-4">
-              <a href="#location" className="block bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-[2rem] w-80 shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-all cursor-pointer">
-                <div className="absolute top-8 right-8 w-10 h-10 bg-black/40 rounded-full flex items-center justify-center text-white/80 group-hover:bg-laex-orange group-hover:text-white transition-all">
-                  <ArrowRight className="w-5 h-5" />
+            {/* Desktop Right Cards */}
+            <div className="hidden lg:flex flex-col items-end justify-center gap-6 pb-4">
+              <a href="#location" className="block bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-[2rem] w-80 shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-all cursor-pointer">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 bg-laex-orange/20 rounded-2xl flex items-center justify-center text-laex-orange">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div className="w-8 h-8 bg-black/40 rounded-full flex items-center justify-center text-white/80 group-hover:bg-laex-orange group-hover:text-white transition-all">
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
-                <div className="mb-6">
-                  <MapPin className="w-8 h-8 text-laex-orange" />
+                <h3 className="text-xl font-bold text-white mb-1">Himayat Nagar</h3>
+                <div className="text-laex-orange font-bold text-[10px] tracking-widest uppercase mb-3">Day Scholar Campus</div>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  Located in the heart of the city, perfect for students seeking a rigorous day-scholar environment.
+                </p>
+              </a>
+
+              <a href="#location" className="block bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-[2rem] w-80 shadow-2xl relative overflow-hidden group hover:bg-white/15 transition-all cursor-pointer">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div className="w-8 h-8 bg-black/40 rounded-full flex items-center justify-center text-white/80 group-hover:bg-laex-orange group-hover:text-white transition-all">
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Himayat Nagar Campus</h3>
-                <p className="text-white/80 text-sm leading-relaxed">
-                  Located in the heart of the city at Himayat Nagar, our campus provides the perfect atmosphere for focus.
+                <h3 className="text-xl font-bold text-white mb-1">Kompally Campus</h3>
+                <div className="text-blue-400 font-bold text-[10px] tracking-widest uppercase mb-3">Residential Campus</div>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  Our premier residential campus offering a holistic, immersive learning environment.
                 </p>
               </a>
             </div>
@@ -1087,12 +1116,13 @@ export default function App() {
             </FadeIn>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               { subject: "Legal Reasoning", alum: "NALSAR Alumnus", exp: "8+ Years Exp" },
               { subject: "Quantitative Techniques", alum: "IIM B Alumnus", exp: "12+ Years Exp" },
               { subject: "Logical Reasoning", alum: "NLSIU Alumnus", exp: "6+ Years Exp" },
-              { subject: "Verbal Ability", alum: "Delhi Univ. Alumnus", exp: "10+ Years Exp" }
+              { subject: "Verbal Ability", alum: "Delhi Univ. Alumnus", exp: "10+ Years Exp" },
+              { subject: "GK & Current Affairs", alum: "UPSC Expert Faculty", exp: "15+ Years Exp" }
             ].map((fac, i) => (
               <FadeIn delay={i * 0.1} key={i}>
                 <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-laex-orange hover:shadow-md hover:-translate-y-1 transition-all h-full">
@@ -1286,11 +1316,11 @@ export default function App() {
               </div>
               <FadeIn>
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white font-bold text-xs tracking-wide mb-6 border border-white/20">
-                  <MapPin className="w-3 h-3 text-laex-orange" /> VISIT OUR CAMPUS
+                  <MapPin className="w-3 h-3 text-laex-orange" /> VISIT OUR CAMPUSES
                 </div>
                 <h2 className="text-3xl font-serif font-bold mb-4">Come Say <span className="text-laex-orange">Hello.</span></h2>
                 <p className="text-white/80 mb-8 text-sm leading-relaxed">
-                  Located in the heart of the city at Himayat Nagar, our campus provides the perfect atmosphere for deep focus and competitive preparation.
+                  With campuses in <span className="text-white font-bold">Himayat Nagar (Day Scholar)</span> and <span className="text-white font-bold">Kompally (Residential)</span>, we provide the perfect environment for focus and competitive preparation.
                 </p>
 
                 <div className="space-y-6">
