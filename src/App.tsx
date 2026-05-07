@@ -428,7 +428,20 @@ export default function App() {
                     exit={{ opacity: 0 }}
                   >
                     <h3 className="text-2xl font-bold text-laex-blue mb-8">Book Your Free Counseling</h3>
-                    <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setIsSubmitted(true); }}>
+                    <form 
+                      className="space-y-6" 
+                      onSubmit={(e) => { 
+                        e.preventDefault(); 
+                        // Trigger PDF download
+                        const link = document.createElement('a');
+                        link.href = '/pdf/_BrochureLa Excellence.pdf';
+                        link.download = '_BrochureLa Excellence.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        setIsSubmitted(true); 
+                      }}
+                    >
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <label className="block text-sm font-bold text-slate-700 mb-2">Student's Full Name</label>
@@ -490,7 +503,7 @@ export default function App() {
                     </div>
                     <h3 className="text-3xl font-bold text-laex-blue mb-4">Request Received!</h3>
                     <p className="text-slate-600 mb-8 text-lg">
-                      Thank you for choosing La Excellence. <br />
+                      Thank you for choosing La Excellence. Your brochure is being downloaded! <br />
                       Our academic counselors will call you within <span className="text-laex-orange font-bold">2 hours</span>.
                     </p>
                     <button
