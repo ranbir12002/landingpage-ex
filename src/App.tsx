@@ -1366,7 +1366,7 @@ export default function App() {
                       </div>
                       <div>
                         <h4 className="font-bold text-lg mb-1">Visiting Hours</h4>
-                        <p className="text-white/60 text-sm">Mon - Sat: 9:00 AM - 7:00 PM<br />Sun: 10:00 AM - 2:00 PM</p>
+                        <p className="text-white/60 text-sm">8:30 AM - 5:00 PM Every Day<br />(Including Sunday)</p>
                       </div>
                     </div>
 
