@@ -54,6 +54,7 @@ export default function App() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -99,9 +100,9 @@ export default function App() {
             <a href="#apply" className={`hidden xs:block px-4 py-2 rounded-full text-[10px] md:text-xs font-bold tracking-wider uppercase transition-all ${isScrolled ? 'bg-laex-orange text-white hover:bg-orange-600 shadow-md' : 'bg-laex-blue text-white hover:bg-laex-blue/90 hover:scale-105 shadow-sm'}`}>
               Free Test
             </a>
-            
+
             {/* Mobile Menu Toggle */}
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`lg:hidden p-2 rounded-xl transition-colors ${isScrolled ? 'text-laex-blue hover:bg-slate-100' : 'text-laex-blue hover:bg-white/40'}`}
             >
@@ -127,7 +128,7 @@ export default function App() {
                 { name: "Results", href: "#results" },
                 { name: "Contact", href: "#apply" }
               ].map((link) => (
-                <a 
+                <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -142,7 +143,7 @@ export default function App() {
                   <div className="w-2 h-2 rounded-full bg-laex-orange animate-pulse"></div>
                   <span className="text-sm font-bold text-laex-blue uppercase tracking-wider">Admissions Open 2026-28</span>
                 </div>
-                <a 
+                <a
                   href="#apply"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="w-full bg-laex-orange text-white text-center py-4 rounded-2xl font-bold uppercase tracking-widest shadow-lg shadow-laex-orange/20"
@@ -428,38 +429,77 @@ export default function App() {
                     exit={{ opacity: 0 }}
                   >
                     <h3 className="text-2xl font-bold text-laex-blue mb-8">Book Your Free Counseling</h3>
-                    <form 
-                      className="space-y-6" 
-                      onSubmit={(e) => { 
-                        e.preventDefault(); 
-                        // Trigger PDF download
-                        const link = document.createElement('a');
-                        link.href = '/pdf/_BrochureLa Excellence.pdf';
-                        link.download = '_BrochureLa Excellence.pdf';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        setIsSubmitted(true); 
+                    <form
+                      className="space-y-6"
+                      onSubmit={async (e) => {
+                        e.preventDefault();
+                        setIsSubmitting(true);
+
+                        const formData = new FormData(e.currentTarget);
+                        const data = {
+                          fullName: formData.get('fullName'),
+                          phone: formData.get('phone'),
+                          email: formData.get('email'),
+                          currentClass: formData.get('currentClass'),
+                          program: formData.get('program'),
+                          campus: formData.get('campus'),
+                        };
+
+                        try {
+                          // Replace with your Google Apps Script Web App URL
+                          const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKyx8iqJB-c4GUmzUoNVM2QHgqASxZdAg6mTSM9Ys07uFyL397kGE8bIIKkNORFLiDUg/exec';
+
+                          if (SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbxKyx8iqJB-c4GUmzUoNVM2QHgqASxZdAg6mTSM9Ys07uFyL397kGE8bIIKkNORFLiDUg/exec') {
+                            await fetch(SCRIPT_URL, {
+                              method: 'POST',
+                              mode: 'no-cors', // Apps Script requires no-cors for simple POSTs
+                              cache: 'no-cache',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify(data),
+                            });
+                          } else {
+                            console.log('Form data:', data);
+                            // Simulating delay for demo
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                          }
+
+                          // Trigger PDF download
+                          const link = document.createElement('a');
+                          link.href = '/pdf/_BrochureLa Excellence.pdf';
+                          link.download = '_BrochureLa Excellence.pdf';
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+
+                          setIsSubmitted(true);
+                        } catch (error) {
+                          console.error('Error submitting form:', error);
+                          alert('There was an error submitting the form. Please try again.');
+                        } finally {
+                          setIsSubmitting(false);
+                        }
                       }}
                     >
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <label className="block text-sm font-bold text-slate-700 mb-2">Student's Full Name</label>
-                          <input required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="Enter full name" />
+                          <input name="fullName" required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="Enter full name" />
                         </div>
                         <div>
                           <label className="block text-sm font-bold text-slate-700 mb-2">Parent's / Guardian Phone</label>
-                          <input required type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="+91 XXXXX XXXXX" />
+                          <input name="phone" required type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="+91 XXXXX XXXXX" />
                         </div>
                       </div>
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
-                          <input required type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="your@email.com" />
+                          <input name="email" required type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 focus:border-laex-orange transition-all" placeholder="your@email.com" />
                         </div>
                         <div>
                           <label className="block text-sm font-bold text-slate-700 mb-2">Current Class</label>
-                          <select required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
+                          <select name="currentClass" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
                             <option value="">Select Class</option>
                             <option value="10">Class 10th (Moving to 11th)</option>
                             <option value="11">Class 11th</option>
@@ -469,7 +509,7 @@ export default function App() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <label className="block text-sm font-bold text-slate-700 mb-2">Program of Interest</label>
-                          <select required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
+                          <select name="program" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
                             <option value="">Select Program</option>
                             <option value="clat">INTER + CLAT</option>
                             <option value="ipmat">INTER + IPMAT</option>
@@ -478,15 +518,28 @@ export default function App() {
                         </div>
                         <div>
                           <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Campus</label>
-                          <select required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
+                          <select name="campus" required className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laex-orange/50 text-slate-700">
                             <option value="">Select Campus</option>
                             <option value="kompally">Kompally (Residential)</option>
                             <option value="himayatnagar">Himayat Nagar (Day Scholar)</option>
                           </select>
                         </div>
                       </div>
-                      <button type="submit" className="w-full bg-laex-orange hover:bg-orange-600 text-white font-bold py-4 rounded-xl text-lg transition-all shadow-lg shadow-laex-orange/20 hover:scale-[1.02] active:scale-[0.98] mt-4 flex justify-center items-center gap-2">
-                        <GraduationCap className="w-5 h-5" /> Get Free Counseling Now
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className={`w-full bg-laex-orange hover:bg-orange-600 text-white font-bold py-4 rounded-xl text-lg transition-all shadow-lg shadow-laex-orange/20 mt-4 flex justify-center items-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.02] active:scale-[0.98]'}`}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                            Submitting...
+                          </>
+                        ) : (
+                          <>
+                            <GraduationCap className="w-5 h-5" /> Get Free Counseling Now
+                          </>
+                        )}
                       </button>
                       <p className="text-center text-xs text-slate-500 font-medium flex items-center justify-center gap-2"><Shield className="w-3 h-3" /> Your information is 100% safe. We respect your privacy.</p>
                     </form>
@@ -1091,10 +1144,10 @@ export default function App() {
                 <FadeIn delay={i * 0.1} key={founder.name}>
                   <div className="group rounded-[2.5rem] overflow-hidden bg-white shadow-sm border border-slate-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
                     <div className="aspect-[16/10] overflow-hidden bg-slate-100">
-                      <img 
-                        src={founder.img} 
-                        alt={founder.name} 
-                        className={`w-full h-full object-cover ${founder.pos || 'object-center'} grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700`} 
+                      <img
+                        src={founder.img}
+                        alt={founder.name}
+                        className={`w-full h-full object-cover ${founder.pos || 'object-center'} grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700`}
                       />
                     </div>
                     <div className="p-8 lg:p-10 flex flex-col flex-grow">
@@ -1501,7 +1554,7 @@ export default function App() {
           </div>
         </div>
       </footer>
-      
+
       {/* Floating Contacts (Responsive Position) */}
       <div className="fixed bottom-6 right-6 lg:left-4 lg:top-1/2 lg:-translate-y-1/2 lg:bottom-auto lg:right-auto z-[100] flex flex-col gap-4">
         <motion.a
@@ -1516,7 +1569,7 @@ export default function App() {
           <MessageSquare className="w-7 h-7" />
           <span className="absolute right-full mr-4 lg:left-full lg:ml-4 px-3 py-1.5 bg-white text-[#25D366] text-xs font-bold rounded-lg shadow-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-all">WhatsApp Us</span>
         </motion.a>
-        
+
         <motion.a
           href="tel:+919000296424"
           initial={{ x: 100, opacity: 0 }}
