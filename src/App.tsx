@@ -449,18 +449,22 @@ export default function App() {
                           // Replace with your Google Apps Script Web App URL
                           const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKyx8iqJB-c4GUmzUoNVM2QHgqASxZdAg6mTSM9Ys07uFyL397kGE8bIIKkNORFLiDUg/exec';
 
-                          if (SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbxKyx8iqJB-c4GUmzUoNVM2QHgqASxZdAg6mTSM9Ys07uFyL397kGE8bIIKkNORFLiDUg/exec') {
-                            await fetch(SCRIPT_URL, {
+                          console.log('Attempting to submit form to:', SCRIPT_URL);
+                          console.log('Form data:', data);
+
+                          if (SCRIPT_URL && SCRIPT_URL.includes('script.google.com')) {
+                            const response = await fetch(SCRIPT_URL, {
                               method: 'POST',
-                              mode: 'no-cors', // Apps Script requires no-cors for simple POSTs
+                              mode: 'no-cors',
                               cache: 'no-cache',
                               headers: {
-                                'Content-Type': 'application/json',
+                                'Content-Type': 'text/plain',
                               },
                               body: JSON.stringify(data),
                             });
+                            console.log('Fetch request completed (opaque response due to no-cors)');
                           } else {
-                            console.log('Form data:', data);
+                            console.warn('Google Apps Script URL is not properly configured. Check App.tsx line 450.');
                             // Simulating delay for demo
                             await new Promise(resolve => setTimeout(resolve, 1000));
                           }
